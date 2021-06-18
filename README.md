@@ -37,7 +37,7 @@ If the `diff` output of the command and the assert file is **different** than th
 
  * * *
 
-### 🕵️📋 Comparing 2 files
+### 🕵️📋 Checking command output whole file
 
 #### Expecting command output to be EQUAL to assert.txt file content
 
@@ -63,7 +63,7 @@ If the `diff` output of the command and the assert file is **different** than th
           expected_result: FAILED
 ```
 
-### 🕵📝 Comparing 2 lines
+### 🕵📝 Checking command output specific line
 
 #### Expecting command output line 3 to be EQUAL than the assert.txt file content in line 3
 
