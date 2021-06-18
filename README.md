@@ -1,6 +1,6 @@
-# test-cli-commands-output-action
+# Test CLI commands Action
 
-[![Action test on Ubuntu](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/windows_test_command_output.yml)
+[![Action test on Ubuntu](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/windows_test_command_output.yml)
 
 ![title](https://user-images.githubusercontent.com/22433243/122581482-7893f400-d02d-11eb-9eee-5e62fe52dadd.png)
 
@@ -27,13 +27,13 @@ _NOTE: You can then access the **output.txt file** in the directory **where you 
 
 ### ✅ Expected behaviour
 
-#### Will return FAIL 
+#### Workflow will COMPLETE
 
-If the `diff` output of the command and the assert file is different than the `expected_result` input value.
+If the `diff` output of the command and the assert file is **equal** to the `expected_result` input value.
 
-#### Will return SUCCESS 
+#### Workflow will FAIL
 
-If the `diff` output of the command and the assert file is equal the `expected_result` input value.
+If the `diff` output of the command and the assert file is **different** than the `expected_result` input value.
 
  * * *
 
@@ -44,7 +44,7 @@ If the `diff` output of the command and the assert file is equal the `expected_r
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/test-cli-commands-output-action@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           assert_file_name: assert.txt
@@ -56,7 +56,7 @@ If the `diff` output of the command and the assert file is equal the `expected_r
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/test-cli-commands-output-action@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           assert_file_name: assert.txt
@@ -70,7 +70,7 @@ If the `diff` output of the command and the assert file is equal the `expected_r
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/test-cli-commands-output-action@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           assert_file_name: assert.txt
@@ -83,7 +83,7 @@ If the `diff` output of the command and the assert file is equal the `expected_r
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/test-cli-commands-output-action@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           assert_file_name: assert.txt
