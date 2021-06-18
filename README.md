@@ -10,34 +10,25 @@ Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
 
 * * *
 
-## 📚 How to use this action?
+## 📚 Usage
 
-The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files to get the output file after the action execution.
+### Actions/checkout
 
-Field | Mandatory | Observation
------------- | ------------  | -------------
-**command_line** | YES | ex: `ls -lha`
-**assert_file_path** | YES | ex: `path/to/assert.txt` or `assert.txt` if on root directory
-**expected_result** | NO | `PASSED` (default) or `FAILED`
-**specific_line** | NO | ex: `1` (integer value only)
+The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
 
-_NOTE: You can then access the **output.txt file** in the directory **where you ran the action**._
+### Expected Behaviours
 
-* * *
-
-### ✅ Expected behaviour
-
-#### Workflow will COMPLETE
+### Workflow will COMPLETE
 
 If the `diff` output of the command and the assert file is **equal** to the `expected_result` input value.
 
-#### Workflow will FAIL
+### Workflow will FAIL
 
 If the `diff` output of the command and the assert file is **different** than the `expected_result` input value.
 
  * * *
 
-### 🕵️📋 Checking command output whole file
+### Scenarios
 
 #### Expecting command output to be EQUAL to assert.txt file content
 
@@ -62,8 +53,6 @@ If the `diff` output of the command and the assert file is **different** than th
           assert_file_name: assert.txt
           expected_result: FAILED
 ```
-
-### 🕵📝 Checking command output specific line
 
 #### Expecting command output line 3 to be EQUAL than the assert.txt file content in line 3
 
@@ -90,6 +79,19 @@ If the `diff` output of the command and the assert file is **different** than th
           expected_result: FAILED
           specific_line: 3
 ```
+
+## ▶️ Action Inputs
+
+Field | Mandatory | Observation
+------------ | ------------  | -------------
+**command_line** | YES | ex: `ls -lha`
+**assert_file_path** | YES | ex: `path/to/assert.txt`
+**expected_result** | NO | `PASSED` (default) or `FAILED`
+**specific_line** | NO | ex: `1` (integer value only)
+
+_NOTE: You can then access the **output.txt file** in the repository directory **where you ran the action**._
+
+* * *
 
 ## Licensed
 
