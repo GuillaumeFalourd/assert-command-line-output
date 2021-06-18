@@ -1,6 +1,6 @@
 name: 'Test CLI commands output action'
 
-description: 'Github Action to test or check outputs of CLI commands'
+description: 'Github Action to test or check outputs of CLI commands 🕵️⚙️🖥'
 
 inputs:
 
