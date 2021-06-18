@@ -12,19 +12,15 @@ Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
 
 ## 📚 Usage
 
-### Actions/checkout
+**actions/checkout**
 
 The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
 
-### Expected Behaviours
+**Expected Behaviours**
 
-### Workflow will COMPLETE
+Workflow will **COMPLETE** if the `diff` output of the command and the assert file is **equal** to the `expected_result` input value.
 
-If the `diff` output of the command and the assert file is **equal** to the `expected_result` input value.
-
-### Workflow will FAIL
-
-If the `diff` output of the command and the assert file is **different** than the `expected_result` input value.
+Workflow will **FAIL** if the `diff` output of the command and the assert file is **different** than the `expected_result` input value.
 
  * * *
 
