@@ -32,7 +32,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: path/to/assert.txt
+          assert_file_path: path/to/assert.txt
           expected_result: PASSED
 ```
 
@@ -44,7 +44,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: path/to/assert.txt
+          assert_file_path: path/to/assert.txt
           expected_result: FAILED
 ```
 
@@ -56,7 +56,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: path/to/assert.txt
+          assert_file_path: path/to/assert.txt
           expected_result: PASSED
           specific_line: 3
 ```
@@ -69,7 +69,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: path/to/assert.txt
+          assert_file_path: path/to/assert.txt
           expected_result: FAILED
           specific_line: 3
 ```
