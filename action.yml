@@ -43,7 +43,6 @@ runs:
       run: |
         if [ -z ${{ inputs.specific_line }} ]; then
           echo Comparing files
-          cat ${{ inputs.assert_file_path }}
           if diff output.txt ${{ inputs.assert_file_path }} >/dev/null; then
             result=$(echo "PASSED")
           else
@@ -67,7 +66,7 @@ runs:
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ -z ${{ inputs.specific_line }} ]; then
-            diff ${{ inputs.first_file_path }} ${{ inputs.second_file_path }}
+            if diff output.txt ${{ inputs.assert_file_path }} >/dev/null; then
           else
             diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} )
           fi
