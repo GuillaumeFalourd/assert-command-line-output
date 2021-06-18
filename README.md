@@ -80,10 +80,10 @@ Workflow will **FAIL** if the `diff` output of the command and the assert file i
 
 Field | Mandatory | Observation
 ------------ | ------------  | -------------
-**command_line** | YES | ex: `ls -lha`
-**assert_file_path** | YES | ex: `path/to/assert.txt`
-**expected_result** | NO | `PASSED` (default) or `FAILED`
-**specific_line** | NO | ex: `1` (integer value only)
+**command_line** | YES | e.g `ls -lha`
+**assert_file_path** | YES | e.g `path/to/assert.txt`
+**expected_result** | NO | e.g `PASSED` (*default*) or `FAILED`
+**specific_line** | NO | e.g `1` (*integer value only*)
 
 _NOTE: You can then access the **output.txt file** in the repository directory **where you ran the action**._
 
