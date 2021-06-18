@@ -1,0 +1,17 @@
+name: Action test on Ubuntu
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: GuillaumeFalourd/test-cli-commands-output-action@main
+        with:
+          command_line: ls -lha
+          assert_file_name: assert.txt
+          expected_result: PASSED
+

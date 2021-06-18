@@ -1,0 +1,81 @@
+name: 'Test CLI commands output action'
+
+description: 'Github Action to test or check outputs of CLI commands'
+
+inputs:
+
+    command_line:
+        description: 'The command line you want to run'
+        required: true
+    assert_file_path:
+        description: 'repo/path/file.txt'
+        required: true
+    expected_result:
+        description: 'PASSED or FAILED'
+        required: false
+        default: 'PASSED'
+    specific_line:
+        description: 'file line to compare'
+        required: false
+
+outputs:
+  diff-output:
+    description: "Diff output"
+    value: ${{ steps.diff.outputs.result }}
+
+runs:
+  using: "composite"
+  steps:
+
+    - name: Create command output file
+      run: |
+        ${{ inputs.command_line }} &> output.txt || true
+      shell: bash
+    
+    - run: |
+        echo ➡️ Command OUTPUT file name is output.txt
+        echo ➡️ The command OUTPUT file content is:
+        cat output.txt
+      shell: bash
+
+    - name: Diff commands
+      id: diff
+      run: |
+        if [ -z ${{ inputs.specific_line }} ]; then
+          echo Comparing files
+          if diff output.txt ${{ inputs.second_file_path }} >/dev/null; then
+            result=$(echo "PASSED")
+          else
+            result=$(echo "FAILED")
+          fi
+        else
+          echo Comparing files specific line
+          if diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} )  >/dev/null; then
+            result=$(echo "PASSED")
+          else
+            result=$(echo "FAILED")
+          fi
+        fi
+        echo ↔️ DIFF command result is $result
+        echo "::set-output name=result::$(echo $result)"
+      shell: bash
+
+    - run: |
+        echo ➡️ DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
+        echo ➡️ DIFF EXPECTED value is ${{ inputs.expected_result }}
+        if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
+          echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
+          if [ -z ${{ inputs.specific_line }} ]; then
+            diff ${{ inputs.first_file_path }} ${{ inputs.second_file_path }}
+          else
+            diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} )
+          fi
+          exit 1
+        else
+          echo "✅ DIFF OUTPUT value EQUAL to DIFF EXPECTED value!"
+        fi
+      shell: bash
+
+branding:
+    icon: 'check'
+    color: 'green'
