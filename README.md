@@ -8,8 +8,6 @@ Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
 
 This action will compare (using [diff](http://www.linuxguide.it/command_line/linux-manpage/do.php?file=diff)) a _command line output_ (success or error) to a _file content_ located on the repository.
 
-*Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
-
 * * *
 
 ## 📚 Usage
@@ -19,6 +17,8 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
 - If the `diff` execution of the command line output and the assert file is **DIFFERENT** than the `expected_result` input value, the action will **FAIL**.
 
 ⚠️  The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
+
+*Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
  * * *
 
