@@ -12,6 +12,6 @@ jobs:
       - uses: GuillaumeFalourd/test-cli-commands-output-action@main
         with:
           command_line: ls -lha
-          assert_file_name: assert.txt
+          assert_file_path: assert.txt
           expected_result: PASSED
 
