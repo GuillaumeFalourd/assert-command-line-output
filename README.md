@@ -2,17 +2,11 @@
 
 [![Action test on Ubuntu](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/windows_test_command_output.yml)
 
-Github Action to test or check outputs of CLI commands
+Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
+
+*Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*
 
 * * *
-
-## 🖥 Supported OS
-
-OS | SUPPORTED
----------- | ------------
-**LINUX** | YES
-**MACOS** | YES
-**WINDOWS** | YES
 
 ## 📚 How to use this action?
 
@@ -21,11 +15,13 @@ The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to us
 Field | Mandatory | Observation
 ------------ | ------------  | -------------
 **command_line** | YES | ex: `ls -lha`
-**assert_file_name** | YES | ex: `assert.txt`
+**assert_file_path** | YES | ex: `path/to/assert.txt` or `assert.txt` if on root directory
 **expected_result** | NO | `PASSED` (default) or `FAILED`
 **specific_line** | NO | ex: `1` (integer value only)
 
-_**Note**: You can then access the **output.txt file** in the directory **where you ran the action**._
+_**NOTE**: You can then access the **output.txt file** in the directory **where you ran the action**._
+
+### Expected behaviour
 
 **Will return FAIL**: If the `diff` output of the command and the assert file is different than the `expected_result` input value.
 
