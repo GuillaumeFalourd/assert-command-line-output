@@ -19,13 +19,19 @@ Field | Mandatory | Observation
 **expected_result** | NO | `PASSED` (default) or `FAILED`
 **specific_line** | NO | ex: `1` (integer value only)
 
-_**NOTE**: You can then access the **output.txt file** in the directory **where you ran the action**._
+_NOTE: You can then access the **output.txt file** in the directory **where you ran the action**._
 
-### Expected behaviour
+* * *
 
-**Will return FAIL**: If the `diff` output of the command and the assert file is different than the `expected_result` input value.
+### ✅ Expected behaviour
 
-**Will return SUCCESS**: If the `diff` output of the command and the assert file is equal the `expected_result` input value.
+#### Will return FAIL 
+
+If the `diff` output of the command and the assert file is different than the `expected_result` input value.
+
+#### Will return SUCCESS 
+
+If the `diff` output of the command and the assert file is equal the `expected_result` input value.
 
  * * *
 
