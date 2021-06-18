@@ -12,19 +12,19 @@ Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
 
 ## 📚 Usage
 
-**actions/checkout**
+This action will compare (using [diff](http://www.linuxguide.it/command_line/linux-manpage/do.php?file=diff)) a _command line output_ (success or error) to a _file content_ located on the repository.
+
+The workflow containg the action will **COMPLETE** if the `diff` output of the command and the assert file is **EQUAL** to the `expected_result` input value.
+
+The workflow containg the action will **FAIL** if the `diff` output of the command and the assert file is **DIFFERENT** than the `expected_result` input value.
+
+**⚠️ actions/checkout**
 
 The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
 
-**Expected Behaviours**
-
-Workflow will **COMPLETE** if the `diff` output of the command and the assert file is **equal** to the `expected_result` input value.
-
-Workflow will **FAIL** if the `diff` output of the command and the assert file is **different** than the `expected_result` input value.
-
  * * *
 
-### Scenarios
+## ♻️ Scenarios
 
 #### Expecting command output to be EQUAL to assert.txt file content
 
@@ -75,6 +75,8 @@ Workflow will **FAIL** if the `diff` output of the command and the assert file i
           expected_result: FAILED
           specific_line: 3
 ```
+
+* * *
 
 ## ▶️ Action Inputs
 
