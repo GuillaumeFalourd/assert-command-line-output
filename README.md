@@ -24,7 +24,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
 
 ## ♻️ Scenarios
 
-#### Expecting command output to be EQUAL to assert.txt file content
+#### Expecting command output to be EQUAL to `assert.txt` file content
 
 ```yaml
     steps:
@@ -32,11 +32,11 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: assert.txt
+          assert_file_name: path/to/assert.txt
           expected_result: PASSED
 ```
 
-#### Expecting command output to be DIFFERENT than the assert.txt file content
+#### Expecting command output to be DIFFERENT than the `assert.txt` file content
 
 ```yaml
     steps:
@@ -44,11 +44,11 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: assert.txt
+          assert_file_name: path/to/assert.txt
           expected_result: FAILED
 ```
 
-#### Expecting command output line 3 to be EQUAL than the assert.txt file content in line 3
+#### Expecting command output line 3 to be EQUAL than the `assert.txt` file content in line 3
 
 ```yaml
     steps:
@@ -56,12 +56,12 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: assert.txt
+          assert_file_name: path/to/assert.txt
           expected_result: PASSED
           specific_line: 3
 ```
 
-#### Expecting command output line 3 to be DIFFERENT than the assert.txt file content in line 3
+#### Expecting command output line 3 to be DIFFERENT than the `assert.txt` file content in line 3
 
 ```yaml
     steps:
@@ -69,7 +69,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
-          assert_file_name: assert.txt
+          assert_file_name: path/to/assert.txt
           expected_result: FAILED
           specific_line: 3
 ```
