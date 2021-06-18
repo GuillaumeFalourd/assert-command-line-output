@@ -50,7 +50,7 @@ runs:
           fi
         else
           echo Comparing files specific line
-          if diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} )  >/dev/null; then
+          if diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} ) >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
@@ -66,7 +66,7 @@ runs:
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ -z ${{ inputs.specific_line }} ]; then
-            if diff output.txt ${{ inputs.assert_file_path }} >/dev/null; then
+            diff output.txt ${{ inputs.assert_file_path }}
           else
             diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} )
           fi
