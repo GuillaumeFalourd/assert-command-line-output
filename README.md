@@ -6,7 +6,7 @@
 
 Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
 
-*Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*
+*Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
 * * *
 
