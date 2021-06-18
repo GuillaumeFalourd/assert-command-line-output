@@ -1,5 +1,7 @@
 # test-cli-commands-output-action
 
+[![Action test on Ubuntu](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-output-action/actions/workflows/windows_test_command_output.yml)
+
 Github Action to test or check outputs of CLI commands
 
 * * *
