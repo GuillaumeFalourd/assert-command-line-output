@@ -33,9 +33,7 @@ runs:
       shell: bash
     
     - run: |
-        echo ➡️ Command OUTPUT file name is output.txt
-        echo ➡️ The command OUTPUT file content is:
-        cat output.txt
+        echo 👍 Command OUTPUT exported to output.txt file
       shell: bash
 
     - name: Diff commands
