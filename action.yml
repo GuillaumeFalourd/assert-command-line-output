@@ -43,7 +43,7 @@ runs:
       run: |
         if [ -z ${{ inputs.specific_line }} ]; then
           echo Comparing files
-          if diff output.txt ${{ inputs.second_file_path }} >/dev/null; then
+          if diff output.txt ${{ inputs.assert_file_path }} >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")

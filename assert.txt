@@ -1,1 +1,10 @@
-ls -lha
+total 40K
+drwxr-xr-x 4 runner docker 4.0K Jun 18 14:00 .
+drwxr-xr-x 3 runner docker 4.0K Jun 18 14:00 ..
+drwxr-xr-x 8 runner docker 4.0K Jun 18 14:00 .git
+drwxr-xr-x 3 runner docker 4.0K Jun 18 14:00 .github
+-rw-r--r-- 1 runner docker  12K Jun 18 14:00 LICENSE
+-rw-r--r-- 1 runner docker 2.7K Jun 18 14:00 README.md
+-rw-r--r-- 1 runner docker 2.5K Jun 18 14:00 action.yml
+-rw-r--r-- 1 runner docker    7 Jun 18 14:00 assert.txt
+-rw-r--r-- 1 runner docker    0 Jun 18 14:00 output.txt
