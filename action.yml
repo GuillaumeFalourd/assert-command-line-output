@@ -28,7 +28,9 @@ runs:
   steps:
 
     - name: Create command output file
-      run: ${{ inputs.command_line }} &> output.txt || true
+      run: |
+        ${{ inputs.command_line }} &> output.txt || true
+        sed -e "s/^M//" output.txt > output.txt
       shell: bash
     
     - run: echo 👍 Command OUTPUT exported to output.txt file
