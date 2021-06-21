@@ -28,9 +28,7 @@ runs:
   steps:
 
     - name: Create command output file
-      run: |
-        ${{ inputs.command_line }} &> output.txt || true
-        sed -e "s/^M//" output.txt > output.txt
+      run: ${{ inputs.command_line }} &> output.txt || true
       shell: bash
     
     - run: echo 👍 Command OUTPUT exported to output.txt file
@@ -41,14 +39,16 @@ runs:
       run: |
         if [ -z ${{ inputs.specific_line }} ]; then
           echo Comparing files
-          if diff output.txt ${{ inputs.assert_file_path }} >/dev/null; then
+          sed 's/^M// output.txt > file1.txt
+          sed 's/^M// ${{ inputs.assert_file_path }} > file2.txt
+          if diff file1.txt file2.txt >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
           fi
         else
           echo Comparing files specific line
-          if diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} ) >/dev/null; then
+          if diff <(head -n ${{ inputs.specific_line }} file1.txt) <(head -n ${{ inputs.specific_line }} file2.txt ) >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
@@ -64,9 +64,9 @@ runs:
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ -z ${{ inputs.specific_line }} ]; then
-            diff output.txt ${{ inputs.assert_file_path }} | cat -t
+            diff file1.txt file2.txt | cat -t
           else
-            diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} ) | cat -t
+            diff <(head -n ${{ inputs.specific_line }} file1.txt) <(head -n ${{ inputs.specific_line }} file2.txt ) | cat -t
           fi
           exit 1
         else
