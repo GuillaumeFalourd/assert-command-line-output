@@ -28,12 +28,10 @@ runs:
   steps:
 
     - name: Create command output file
-      run: |
-        ${{ inputs.command_line }} &> output.txt || true
+      run: ${{ inputs.command_line }} &> output.txt || true
       shell: bash
     
-    - run: |
-        echo 👍 Command OUTPUT exported to output.txt file
+    - run: echo 👍 Command OUTPUT exported to output.txt file
       shell: bash
 
     - name: Diff commands
@@ -64,9 +62,9 @@ runs:
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ -z ${{ inputs.specific_line }} ]; then
-            diff output.txt ${{ inputs.assert_file_path }}
+            diff output.txt ${{ inputs.assert_file_path }} | cat -t
           else
-            diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} )
+            diff <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} ) | cat -t
           fi
           exit 1
         else
