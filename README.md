@@ -32,6 +32,8 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -45,6 +47,8 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -58,6 +62,8 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -72,6 +78,8 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
