@@ -18,7 +18,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
 
 ⚠️  The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
 
-⚠️ The [`actions/setup-node`](https://github.com/actions/setup-node) is mandatory to use this action on **UBUNTU-RUNNER**, as it will be necessary to use npm to install [strip-ansi-cli](https://www.npmjs.com/package/strip-ansi-cli) during the action execution.
+⚠️ The [`actions/setup-node`](https://github.com/actions/setup-node) is mandatory to use this action, as it will be necessary to use npm to install [strip-ansi-cli](https://www.npmjs.com/package/strip-ansi-cli) during the action execution.
 
 *Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
