@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
+
   failed-test:
     runs-on: ubuntu-latest
     steps:
@@ -17,6 +18,7 @@ jobs:
           command_line: ls -lha
           assert_file_path: assert.txt
           expected_result: FAILED
+
   success-test:
     runs-on: ubuntu-latest
     steps:
