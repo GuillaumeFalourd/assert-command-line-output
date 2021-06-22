@@ -17,10 +17,6 @@ inputs:
     specific_line:
         description: 'file line to compare'
         required: false
-    # shell_output_file:
-    #     description: 'Shell that will be used to create the output file'
-    #     required: false
-    #     default: 'bash'
 
 outputs:
   diff-output:
@@ -42,24 +38,6 @@ runs:
         ${{ inputs.command_line }} &> output.txt || true
         echo 🚀 Command OUTPUT exported to output.txt file
       shell: bash
-
-    # - name: Create command output file if BASH
-    #   run: |
-    #     echo BASH
-    #     if [ bash = ${{ inputs.shell_output_file }} ]; then
-    #       ${{ inputs.command_line }} &> output.txt || true
-    #       echo 👍 Command OUTPUT exported to output.txt file using BASH
-    #     fi
-    #   shell: bash
-
-    # - name: Create command output file if PWSH
-    #   run: |
-    #     echo PWSH
-    #     if ( "pwsh" -eq "${{ inputs.shell_output_file }}" ){
-    #       ${{ inputs.command_line }} *> output.txt | Out-Null
-    #       echo 👍 Command OUTPUT exported to output.txt file using PWSH
-    #     }
-    #   shell: pwsh
 
     - name: Diff commands
       id: diff
