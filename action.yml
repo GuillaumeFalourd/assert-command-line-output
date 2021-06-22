@@ -79,7 +79,7 @@ runs:
             result=$(echo "FAILED")
           fi
         fi
-        echo ↔️ DIFF command result is $result
+        echo ☞ DIFF command result is $result
         echo "::set-output name=result::$(echo $result)"
       shell: bash
 
