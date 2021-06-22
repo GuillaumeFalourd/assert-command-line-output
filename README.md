@@ -12,9 +12,9 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
 
 ## 📚 Usage
 
-- If the `diff` execution of the _command line output_ and the _assert file_ is **EQUAL** to the `expected_result` input value, the action will **PASS**.
+✅ If the `diff` execution of the _command line output_ and the _assert file_ is **EQUAL** to the `expected_result` input value, the action will **PASS**.
 
-- If the `diff` execution of the _command line output_ and the _assert file_ is **DIFFERENT** than the `expected_result` input value, the action will **FAIL**.
+❌ If the `diff` execution of the _command line output_ and the _assert file_ is **DIFFERENT** than the `expected_result` input value, the action will **FAIL**.
 
 ⚠️  The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
 
