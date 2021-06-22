@@ -17,6 +17,10 @@ inputs:
     specific_line:
         description: 'file line to compare'
         required: false
+    shell_output_file:
+        description: 'Shell that will be used to create the output file'
+        required: false
+        default: 'bash'
 
 outputs:
   diff-output:
@@ -30,9 +34,22 @@ runs:
     - name: Create command output file
       run: ${{ inputs.command_line }} &> output.txt || true
       shell: bash
-    
-    - run: echo 👍 Command OUTPUT exported to output.txt file
+
+    - name: Create command output file if BASH
+      run: |
+        if [ bash -eq ${{ inputs.shell_output_file }} ]; then
+          ${{ inputs.command_line }} &> output.txt || true
+          echo 👍 Command OUTPUT exported to output.txt file using BASH
+        fi
       shell: bash
+
+    - name: Create command output file if PWSH
+      run: |
+        if ( pwsh == ${{ inputs.shell_output_file }} ){
+          ${{ inputs.command_line }} &> output.txt || true
+          echo 👍 Command OUTPUT exported to output.txt file using PWSH
+        }
+      shell: pwsh
 
     - name: Diff commands
       id: diff
