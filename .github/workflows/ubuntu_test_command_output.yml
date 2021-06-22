@@ -22,7 +22,7 @@ jobs:
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
-          expected_result: PASSED
+          expected_result: FAILED
           specific_line: 2
 
   success-test:
@@ -32,6 +32,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@main
+        with:
+          command_line: cat assert.txt
+          assert_file_path: assert.txt
+          expected_result: PASSED
+          specific_line: 1
       - uses: GuillaumeFalourd/test-cli-commands-action@main
         with:
           command_line: ls -lha

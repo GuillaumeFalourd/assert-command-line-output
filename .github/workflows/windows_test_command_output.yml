@@ -22,7 +22,7 @@ jobs:
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
-          expected_result: PASSED
+          expected_result: FAILED
           specific_line: 2
   
   success-test:
