@@ -47,7 +47,7 @@ runs:
     - name: Create command output file if PWSH
       run: |
         echo PWSH
-        if ( "pwsh" -eq ${{ inputs.shell_output_file }} ){
+        if ( "pwsh" -eq "${{ inputs.shell_output_file }}" ){
           ${{ inputs.command_line }} *> output.txt | Out-Null
           echo 👍 Command OUTPUT exported to output.txt file using PWSH
         }
