@@ -17,10 +17,10 @@ inputs:
     specific_line:
         description: 'file line to compare'
         required: false
-    shell_output_file:
-        description: 'Shell that will be used to create the output file'
-        required: false
-        default: 'bash'
+    # shell_output_file:
+    #     description: 'Shell that will be used to create the output file'
+    #     required: false
+    #     default: 'bash'
 
 outputs:
   diff-output:
@@ -32,11 +32,15 @@ runs:
   steps:
 
     - name: install strip-ansi-cli
-      run: npm install --global strip-ansi-cli
+      run: |
+        echo 🚧 Installing strip-ansi-cli
+        npm install --global strip-ansi-cli
       shell: bash
 
     - name: Create command output file
-      run: ${{ inputs.command_line }} &> output.txt || true
+      run: |
+        ${{ inputs.command_line }} &> output.txt || true
+        echo 🚀 Command OUTPUT exported to output.txt file
       shell: bash
 
     # - name: Create command output file if BASH
@@ -61,14 +65,14 @@ runs:
       id: diff
       run: |
         if [ -z ${{ inputs.specific_line }} ]; then
-          echo Comparing files
+          echo 🕵️ Comparing files
           if diff -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
           fi
         else
-          echo Comparing files specific line
+          echo 🕵️ Comparing files specific line
           if diff -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) >/dev/null; then
             result=$(echo "PASSED")
           else
@@ -80,8 +84,8 @@ runs:
       shell: bash
 
     - run: |
-        echo ➡️ DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
-        echo ➡️ DIFF EXPECTED value is ${{ inputs.expected_result }}
+        echo ☞ DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
+        echo ☞ DIFF EXPECTED value is ${{ inputs.expected_result }}
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ -z ${{ inputs.specific_line }} ]; then
