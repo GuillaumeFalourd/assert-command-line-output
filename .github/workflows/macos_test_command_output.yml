@@ -30,4 +30,4 @@ jobs:
           command_line: ls -lha
           assert_file_path: assert.txt
           expected_result: PASSED
-          specific_line: 2
+          specific_line: 1
