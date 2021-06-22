@@ -17,6 +17,10 @@ inputs:
     specific_line:
         description: 'file line to compare'
         required: false
+    # shell_output_file:
+    #     description: 'Shell that will be used to create the output file'
+    #     required: false
+    #     default: 'bash'
 
 outputs:
   diff-output:
@@ -27,44 +31,67 @@ runs:
   using: "composite"
   steps:
 
+    - name: install strip-ansi-cli
+      run: |
+        echo 🚧 Installing strip-ansi-cli
+        npm install --global strip-ansi-cli
+      shell: bash
+
     - name: Create command output file
-      run: ${{ inputs.command_line }} &> output.txt || true
+      run: |
+        ${{ inputs.command_line }} &> output.txt || true
+        echo 🚀 Command OUTPUT exported to output.txt file
       shell: bash
-    
-    - run: echo 👍 Command OUTPUT exported to output.txt file
-      shell: bash
+
+    # - name: Create command output file if BASH
+    #   run: |
+    #     echo BASH
+    #     if [ bash = ${{ inputs.shell_output_file }} ]; then
+    #       ${{ inputs.command_line }} &> output.txt || true
+    #       echo 👍 Command OUTPUT exported to output.txt file using BASH
+    #     fi
+    #   shell: bash
+
+    # - name: Create command output file if PWSH
+    #   run: |
+    #     echo PWSH
+    #     if ( "pwsh" -eq "${{ inputs.shell_output_file }}" ){
+    #       ${{ inputs.command_line }} *> output.txt | Out-Null
+    #       echo 👍 Command OUTPUT exported to output.txt file using PWSH
+    #     }
+    #   shell: pwsh
 
     - name: Diff commands
       id: diff
       run: |
         if [ -z ${{ inputs.specific_line }} ]; then
-          echo Comparing files
-          if diff --strip-trailing-cr output.txt ${{ inputs.assert_file_path }} >/dev/null; then
+          echo 🕵️ Comparing files
+          if diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
           fi
         else
-          echo Comparing files specific line
-          if diff --strip-trailing-cr <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} ) >/dev/null; then
+          echo 🕵️ Comparing files specific line
+          if diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
           fi
         fi
-        echo ↔️ DIFF command result is $result
+        echo ☞ DIFF command result is $result
         echo "::set-output name=result::$(echo $result)"
       shell: bash
 
     - run: |
-        echo ➡️ DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
-        echo ➡️ DIFF EXPECTED value is ${{ inputs.expected_result }}
+        echo ☞ DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
+        echo ☞ DIFF EXPECTED value is ${{ inputs.expected_result }}
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ -z ${{ inputs.specific_line }} ]; then
-            diff --strip-trailing-cr output.txt ${{ inputs.assert_file_path }} | cat -t
+          diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) | cat -t
           else
-            diff --strip-trailing-cr <(head -n ${{ inputs.specific_line }} output.txt) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} ) | cat -t
+            diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) | cat -t
           fi
           exit 1
         else
