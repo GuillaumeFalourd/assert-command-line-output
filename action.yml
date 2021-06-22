@@ -51,7 +51,7 @@ runs:
           fi
         else
           echo 🕵️ Comparing files specific line
-          if diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) >/dev/null; then
+          if diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi | tail -n ${{ inputs.specific_line }} ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi | tail -n ${{ inputs.specific_line }}) >/dev/null; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
@@ -69,7 +69,7 @@ runs:
           if [ -z ${{ inputs.specific_line }} ]; then
           diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) | cat -t
           else
-            diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) | cat -t
+            diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi | tail -n ${{ inputs.specific_line }} ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi | tail -n ${{ inputs.specific_line }}) | cat -t
           fi
           exit 1
         else
