@@ -47,7 +47,7 @@ runs:
       run: |
         echo Contains: ${{ inputs.contains }}
         echo Specific Line: ${{ inputs.specific_line }}
-        if [ ! -z ${{ inputs.contains }} ]; then
+        if [ ! -z "${{ inputs.contains" }} ]; then
           echo 🕵️ Check if output file contains "${{ inputs.contains }}"
           if grep -q ${{ inputs.contains }} output.txt; then
             result=$(echo "PASSED")
@@ -78,7 +78,7 @@ runs:
         echo ☞ DIFF EXPECTED value is ${{ inputs.expected_result }}
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
-          if [ ! -z ${{ inputs.contains }} ]; then
+          if [ ! -z "${{ inputs.contains }}" ]; then
             echo Command output doesn't contain ${{ inputs.contains }}
             cat output.txt
           elif [ -z ${{ inputs.specific_line }} ]; then
