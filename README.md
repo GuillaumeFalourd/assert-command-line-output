@@ -12,9 +12,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ## 📚 Usage
 
-- If the `comparision` between the _command line output_ and the _assert file_ (or _expression_) is **EQUAL** to the `expected_result` input value, the action will **PASS**.
-
-- If the `comparision` between the _command line output_ and the _assert file_ (or _expression_) is **DIFFERENT** than the `expected_result` input value, the action will **FAIL**.
+![usage](https://user-images.githubusercontent.com/22433243/123485496-9c80a800-d5e0-11eb-83b5-c259490e4b6a.png)
 
 ⚠️  The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
 
