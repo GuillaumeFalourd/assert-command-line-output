@@ -9,7 +9,7 @@ inputs:
         required: true
     assert_file_path:
         description: 'repo/path/file.txt'
-        required: true
+        required: false
     expected_result:
         description: 'PASSED or FAILED'
         required: false
@@ -17,10 +17,9 @@ inputs:
     specific_line:
         description: 'file line to compare'
         required: false
-    # shell_output_file:
-    #     description: 'Shell that will be used to create the output file'
-    #     required: false
-    #     default: 'bash'
+    contains: 
+        description: 'String the file must contain'
+        required: false
 
 outputs:
   diff-output:
@@ -43,28 +42,16 @@ runs:
         echo 🚀 Command OUTPUT exported to output.txt file
       shell: bash
 
-    # - name: Create command output file if BASH
-    #   run: |
-    #     echo BASH
-    #     if [ bash = ${{ inputs.shell_output_file }} ]; then
-    #       ${{ inputs.command_line }} &> output.txt || true
-    #       echo 👍 Command OUTPUT exported to output.txt file using BASH
-    #     fi
-    #   shell: bash
-
-    # - name: Create command output file if PWSH
-    #   run: |
-    #     echo PWSH
-    #     if ( "pwsh" -eq "${{ inputs.shell_output_file }}" ){
-    #       ${{ inputs.command_line }} *> output.txt | Out-Null
-    #       echo 👍 Command OUTPUT exported to output.txt file using PWSH
-    #     }
-    #   shell: pwsh
-
     - name: Diff commands
       id: diff
       run: |
-        if [ -z ${{ inputs.specific_line }} ]; then
+        if [ -z ${{ inputs.contains }} ]; then
+          if grep -q ${{ inputs.contains }} "output.txt"; then
+            result=$(echo "PASSED")
+          else
+            result=$(echo "FAILED")
+          fi
+        elif [ -z ${{ inputs.specific_line }} ]; then
           echo 🕵️ Comparing files
           if diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) >/dev/null; then
             result=$(echo "PASSED")

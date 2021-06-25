@@ -1,0 +1,45 @@
+name: Test Contains
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: .github
+          expected_result: PASSED
+
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: .github
+          expected_result: PASSED
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: .github
+          expected_result: PASSED
