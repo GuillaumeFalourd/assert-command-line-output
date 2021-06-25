@@ -17,6 +17,11 @@ jobs:
           command_line: ls -lha
           contains: runner
           expected_result: PASSED
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: test
+          expected_result: FAILED
 
   macos:
     runs-on: macos-latest
@@ -30,6 +35,11 @@ jobs:
           command_line: ls -lha
           contains: runner
           expected_result: PASSED
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: test
+          expected_result: FAILED
 
   windows:
     runs-on: windows-latest
@@ -43,3 +53,8 @@ jobs:
           command_line: ls -lha
           contains: runner
           expected_result: PASSED
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: test
+          expected_result: FAILED
