@@ -71,8 +71,8 @@ runs:
       shell: bash
 
     - run: |
-        echo 👉 DIFF OUTPUT value is ${{ steps.comparision.outputs.result }}
-        echo 👉 DIFF EXPECTED value is ${{ inputs.expected_result }}
+        echo 👉 Comparision OUTPUT result is ${{ steps.comparision.outputs.result }}
+        echo 👉 Comparision EXPECTED result is ${{ inputs.expected_result }}
         if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
             echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
             if [ ! -z ${{ inputs.contains }} ]; then
