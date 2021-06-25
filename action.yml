@@ -77,7 +77,7 @@ runs:
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ ! -z "${{ inputs.contains }}" ]; then
-            echo Command output doesn't contain ${{ inputs.contains }}
+            echo "Command output doesn't contain ${{ inputs.contains }}"
             cat output.txt
           elif [ -z ${{ inputs.specific_line }} ]; then
             diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) | cat -t
