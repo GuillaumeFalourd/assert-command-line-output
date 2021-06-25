@@ -15,7 +15,7 @@ jobs:
       - uses: GuillaumeFalourd/test-cli-commands-action@dev
         with:
           command_line: ls -lha
-          contains: runner docker
+          contains: runner
           expected_result: PASSED
 
   macos:
@@ -28,7 +28,7 @@ jobs:
       - uses: GuillaumeFalourd/test-cli-commands-action@dev
         with:
           command_line: ls -lha
-          contains: runner docker
+          contains: runner
           expected_result: PASSED
 
   windows:
@@ -41,5 +41,5 @@ jobs:
       - uses: GuillaumeFalourd/test-cli-commands-action@dev
         with:
           command_line: ls -lha
-          contains: runner docker
+          contains: runner
           expected_result: PASSED
