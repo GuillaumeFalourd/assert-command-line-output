@@ -141,7 +141,7 @@ Field | Mandatory | Observation
   - 1️⃣ `contains`
   - 2️⃣ `specific_line`
   - 3️⃣ `assert_file_path`
-- You can then access the **output.txt file** in the repository directory **where you ran the action**.
+- You can access the **output.txt file** in the repository directory **after running the action**.
 
 * * *
 
