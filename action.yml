@@ -45,10 +45,11 @@ runs:
     - name: Diff commands
       id: diff
       run: |
-        echo ${{ inputs.contains }}
-        if [[ -z "${{ inputs.contains }}" ]]; then
+        echo Contains: ${{ inputs.contains }}
+        echo Specific Line: ${{ inputs.specific_line }}
+        if [ -z ${{ inputs.contains }} ]; then
           echo 🕵️ Check if output file contains "${{ inputs.contains }}"
-          if grep -q "${{ inputs.contains }}" "output.txt"; then
+          if grep -q ${{ inputs.contains }} output.txt; then
             result=$(echo "PASSED")
           else
             result=$(echo "FAILED")
@@ -77,8 +78,8 @@ runs:
         echo ☞ DIFF EXPECTED value is ${{ inputs.expected_result }}
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
-          if [[ -z "${{ inputs.contains }}" ]]; then
-            echo "Command output doesn't contain ${{ inputs.contains }}"
+          if [ -z ${{ inputs.contains }} ]; then
+            echo Command output doesn't contain ${{ inputs.contains }}
             cat output.txt
           elif [ -z ${{ inputs.specific_line }} ]; then
             diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) | cat -t
@@ -87,7 +88,7 @@ runs:
           fi
           exit 1
         else
-          echo "✅ DIFF OUTPUT value EQUAL to DIFF EXPECTED value!"
+          echo ✅ DIFF OUTPUT value EQUAL to DIFF EXPECTED value!
         fi
       shell: bash
 
