@@ -5,41 +5,82 @@ on:
   workflow_dispatch:
 
 jobs:
-  failed-test:
+  PASSED-assert-file:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: GuillaumeFalourd/test-cli-commands-action@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
         with:
-          command_line: ls -lha
-          assert_file_path: assert.txt
-          expected_result: FAILED
-      - uses: GuillaumeFalourd/test-cli-commands-action@main
-        with:
-          command_line: ls -lha
-          assert_file_path: assert.txt
-          expected_result: FAILED
-          specific_line: 2
-  
-  success-test:
-    runs-on: ubuntu-latest
+          command_line: cat action.yml
+          assert_file_path: action.yml
+          expected_result: PASSED
+
+  FAILED-assert-file:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: GuillaumeFalourd/test-cli-commands-action@main
-        with:
-          command_line: cat assert.txt
-          assert_file_path: assert.txt
-          expected_result: PASSED
-          specific_line: 1
-      - uses: GuillaumeFalourd/test-cli-commands-action@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
+          expected_result: FAILED
+  
+  PASSED-specific-line:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: cat action.yml
+          assert_file_path: action.yml
           expected_result: PASSED
           specific_line: 1
+
+  FAILED-specific-line:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+          specific_line: 2
+
+  PASSED-contains:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+
+  FAILED-contains:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED

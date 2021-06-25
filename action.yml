@@ -3,25 +3,27 @@ name: 'Test CLI commands Action'
 description: 'Github Action to test or check outputs of CLI commands 🕵️⚙️🖥'
 
 inputs:
-
     command_line:
         description: 'The command line you want to run'
         required: true
     assert_file_path:
-        description: 'repo/path/file.txt'
-        required: true
+        description: 'Path to assert file to compare. e.g: repo/path/file.txt'
+        required: false
+    specific_line:
+        description: 'Assert file line to compare with the command line output file'
+        required: false
+    contains: 
+        description: 'Expression the command line output file must contain'
+        required: false
     expected_result:
         description: 'PASSED or FAILED'
         required: false
         default: 'PASSED'
-    specific_line:
-        description: 'file line to compare'
-        required: false
 
 outputs:
   diff-output:
-    description: "Diff output"
-    value: ${{ steps.diff.outputs.result }}
+    description: "Comparision output"
+    value: ${{ steps.comparision.outputs.result }}
 
 runs:
   using: "composite"
@@ -29,8 +31,10 @@ runs:
 
     - name: install strip-ansi-cli
       run: |
-        echo 🚧 Installing strip-ansi-cli
-        npm install --global strip-ansi-cli
+        if [ -z ${{ inputs.contains }} ]; then
+            echo 🚧 Installing strip-ansi-cli
+            npm install --global strip-ansi-cli
+        fi
       shell: bash
 
     - name: Create command output file
@@ -39,40 +43,51 @@ runs:
         echo 🚀 Command OUTPUT exported to output.txt file
       shell: bash
 
-    - name: Diff commands
-      id: diff
+    - name: Comparision
+      id: comparision
       run: |
-        if [ -z ${{ inputs.specific_line }} ]; then
-          echo 🕵️ Comparing files
-          if diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) >/dev/null; then
-            result=$(echo "PASSED")
-          else
-            result=$(echo "FAILED")
-          fi
+        if [ ! -z ${{ inputs.contains }} ]; then
+            echo 🕵️ Check if output file contains expression \"${{ inputs.contains }}\"
+            if grep -q "${{ inputs.contains }}" output.txt; then
+                result=$(echo "PASSED")
+            else
+                result=$(echo "FAILED")
+            fi
+        elif [ ! -z ${{ inputs.specific_line }} ]; then
+            echo 🕵️ Comparing files specific line
+            if diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) >/dev/null; then
+                result=$(echo "PASSED")
+            else
+                result=$(echo "FAILED")
+            fi
         else
-          echo 🕵️ Comparing files specific line
-          if diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi | tail -n ${{ inputs.specific_line }} ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi | tail -n ${{ inputs.specific_line }}) >/dev/null; then
-            result=$(echo "PASSED")
-          else
-            result=$(echo "FAILED")
-          fi
+            echo 🕵️ Comparing files
+            if diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) >/dev/null; then
+                result=$(echo "PASSED")
+            else
+                result=$(echo "FAILED")
+            fi
         fi
         echo "::set-output name=result::$(echo $result)"
       shell: bash
 
-    - run: |
-        echo 🔎 DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
-        echo 🔎 DIFF EXPECTED value is ${{ inputs.expected_result }}
-        if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
-          echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
-          if [ -z ${{ inputs.specific_line }} ]; then
-          diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) | cat -t
-          else
-            diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi | tail -n ${{ inputs.specific_line }} ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi | tail -n ${{ inputs.specific_line }}) | cat -t
-          fi
-          exit 1
+    - name: GOT vs EXPECTED
+      run: |
+        echo ▶️ GOT: ${{ steps.comparision.outputs.result }}
+        echo ▶️ EXPECTED: ${{ inputs.expected_result }}
+        if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
+            echo 🆚 GOT != EXPECTED ❌
+            if [ ! -z ${{ inputs.contains }} ]; then
+                echo "Command output doesn't contain \"${{ inputs.contains }}\""
+                cat output.txt
+            elif [ ! -z ${{ inputs.specific_line }} ]; then
+                diff --strip-trailing-cr -a <(head -n ${{ inputs.specific_line }} output.txt | strip-ansi ) <(head -n ${{ inputs.specific_line }} ${{ inputs.assert_file_path }} | strip-ansi ) | cat -t
+            else
+                diff --strip-trailing-cr -a <(cat output.txt | strip-ansi) <(cat ${{ inputs.assert_file_path }} | strip-ansi) | cat -t
+            fi
+            exit 1
         else
-          echo "✅ DIFF OUTPUT value EQUAL to DIFF EXPECTED value!"
+            echo 🆚 GOT = EXPECTED ✅
         fi
       shell: bash
 
