@@ -78,7 +78,7 @@ runs:
         echo ☞ DIFF EXPECTED value is ${{ inputs.expected_result }}
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
-          if [ -z ${{ inputs.contains }} ]; then
+          if [ ! -z ${{ inputs.contains }} ]; then
             echo Command output doesn't contain ${{ inputs.contains }}
             cat output.txt
           elif [ -z ${{ inputs.specific_line }} ]; then
