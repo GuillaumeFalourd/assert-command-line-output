@@ -24,7 +24,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
 
 ## ♻️ Scenarios
 
-### Assert file
+### `Assert file content`
 
 #### Expecting command output to be EQUAL to `assert.txt` file content
 
@@ -56,7 +56,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
           expected_result: FAILED
 ```
 
-### Assert specific line
+### `Assert specific file line`
 
 #### Expecting command output line 3 to be EQUAL than the `assert.txt` file content in line 3
 
@@ -90,7 +90,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
           specific_line: 3
 ```
 
-### Assert file content
+### `Assert specific expression`
 
 #### Expecting command output to contain specific expression
 
