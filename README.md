@@ -12,9 +12,9 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ## 📚 Usage
 
-### How does this action work?
+### How does the action work?
 
-![usage](https://user-images.githubusercontent.com/22433243/123486019-ac4cbc00-d5e1-11eb-943f-28112d2a61c5.png)
+![usage](https://user-images.githubusercontent.com/22433243/123486188-f0d85780-d5e1-11eb-879c-e3a4adb7fed6.png)
 
 ### Requirements
 
