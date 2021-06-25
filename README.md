@@ -6,19 +6,21 @@
 
 Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
 
-This action will compare (using [diff](http://www.linuxguide.it/command_line/linux-manpage/do.php?file=diff)) a _command line output_ (success or error) to a _file content_ located on the repository.
+This action allows to compare a _command line output_ (success or error) with a _file content_ located on the repository, or to check if it contains a specific _expression_.
 
 * * *
 
 ## 📚 Usage
 
-- If the `diff` execution of the _command line output_ and the _assert file_ is **EQUAL** to the `expected_result` input value, the action will **PASS**.
+- If the `comparision` execution of the _command line output_ and the _assert file_ is **EQUAL** to the `expected_result` input value, the action will **PASS**.
 
-- If the `diff` execution of the _command line output_ and the _assert file_ is **DIFFERENT** than the `expected_result` input value, the action will **FAIL**.
+- If the `comparision` execution of the _command line output_ and the _assert file_ is **DIFFERENT** than the `expected_result` input value, the action will **FAIL**.
 
-⚠️  The [`actions/checkout`](https://github.com/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the output file after the action execution.
+⚠️  The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
 
-*Note: This action gather the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
+⚠️  The [`actions/setup-node`](https://github.com/marketplace/actions/setup-node-js-environment) may be mandatory to use this action if uses to compare the command line output with a file content located on the repository, as it will install [strip ansi cli](https://www.npmjs.com/package/strip-ansi-cli) to check both files independently of the OS runner.
+
+*Note: This action gather the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
  * * *
 
