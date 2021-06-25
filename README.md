@@ -130,7 +130,7 @@ Field | Mandatory | Observation
 ------------ | ------------  | -------------
 **command_line** | YES | Command Line to check. <br/> _e.g: `ls -lha`_
 **assert_file_path** | NO | Path to assert file that will be compared to command line output. <br/> _e.g: `path/to/assert.txt`_
-**specific_line** | NO | Specific line to check from output file with assert file. <br/> **NEEDS `assert_file_path` configured. <br/> _e.g: `1` (*integer value only*)_
+**specific_line** | NO | Specific line to check from output file with assert file. <br/> **NEEDS** `assert_file_path` configured. <br/> _e.g: `1` (*integer value only*)_
 **contains** | NO | String expression to check on the command line output. <br/> _e.g: `my_string_expression`_
 **expected_result** | NO | Expected comparision output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
 
