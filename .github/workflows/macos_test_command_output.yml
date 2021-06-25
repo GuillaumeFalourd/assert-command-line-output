@@ -5,7 +5,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  failed-test:
+  passed-assert-file:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: cat action.yml
+          assert_file_path: action.yml
+          expected_result: PASSED
+
+  failed-assert-file:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2.3.4
@@ -17,8 +30,9 @@ jobs:
           command_line: ls -lha
           assert_file_path: assert.txt
           expected_result: FAILED
-  success-test:
-    runs-on: ubuntu-latest
+  
+  passed-assert-specific-line:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: actions/setup-node@v2
@@ -30,3 +44,43 @@ jobs:
           assert_file_path: assert.txt
           expected_result: PASSED
           specific_line: 1
+
+  failed-assert-specific-line:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+          specific_line: 2
+
+  passed-contains:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+
+  failed-contains:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@dev
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED
