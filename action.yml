@@ -71,9 +71,9 @@ runs:
       shell: bash
 
     - run: |
-        echo GOT 🆚 EXPECTED
-        echo ▶️ GOT ${{ steps.comparision.outputs.result }}
-        echo ▶️ EXPECTED ${{ inputs.expected_result }}
+        echo 🆚 GOT vs EXPECTED
+        echo ▶️ GOT: ${{ steps.comparision.outputs.result }}
+        echo ▶️ EXPECTED: ${{ inputs.expected_result }}
         if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
             echo "❌ GOT result NOT EQUAL to EXPECTED result!"
             if [ ! -z ${{ inputs.contains }} ]; then
