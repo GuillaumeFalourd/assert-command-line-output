@@ -46,6 +46,7 @@ runs:
       id: diff
       run: |
         if [ -z ${{ inputs.contains }} ]; then
+          echo 🕵️ Check if output file contains specific string
           if grep -q "${{ inputs.contains }}" "output.txt"; then
             result=$(echo "PASSED")
           else
