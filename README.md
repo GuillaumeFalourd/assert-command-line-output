@@ -20,9 +20,9 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ### Requirements
 
-⚠️  The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
+⚠️    The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
 
-⚠️  The [`actions/setup-node`](https://github.com/marketplace/actions/setup-node-js-environment) may be mandatory to use this action if uses to compare the command line output with a file content located on the repository, as it will install [strip ansi cli](https://www.npmjs.com/package/strip-ansi-cli) to check both files independently of the OS runner.
+⚠️    The [`actions/setup-node`](https://github.com/marketplace/actions/setup-node-js-environment) may be mandatory to use this action if uses to compare the command line output with a file content located on the repository, as it will install [strip ansi cli](https://www.npmjs.com/package/strip-ansi-cli) to check both files independently of the OS runner.
 
 ☞ *Note: This action gathers the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
@@ -134,11 +134,12 @@ Field | Mandatory | Observation
 **contains** | NO | String expression to check on the command line output. <br/> _e.g: `my_string_expression`_
 **expected_result** | NO | Expected comparision output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
 
-⚠️  At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. If **more than one type of comparision** is set, the priority between them is:
+⚠️   At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. 
 
-- `contains` > `specific_line` > `assert_file_path`.
+If **more than one type of comparision** is set, the priority between them is:
+`contains` > `specific_line` > `assert_file_path`
 
-⚠️  You can then access the **output.txt file** in the repository directory **where you ran the action**.
+⚠️   You can then access the **output.txt file** in the repository directory **where you ran the action**.
 
 * * *
 
