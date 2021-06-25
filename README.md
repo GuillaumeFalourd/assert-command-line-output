@@ -136,11 +136,13 @@ Field | Mandatory | Observation
 
 ### 🔎 Good to know
 
-- At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. 
+- At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured.
+
 - If **more than one type of comparision** is set, the priority between them is:
   - 1️⃣ `contains`
   - 2️⃣ `specific_line`
   - 3️⃣ `assert_file_path`
+
 - You can access the **output.txt file** in the repository directory **after running the action**.
 
 * * *
