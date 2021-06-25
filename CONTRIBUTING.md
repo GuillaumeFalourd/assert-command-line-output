@@ -1,10 +1,10 @@
-# Contribution
+# 🤝 Contribution
 
 You're welcome to create ISSUES or open PULL REQUESTS 🚀
 
-## Guidelines
+## 📚 Guidelines
 
-### Issues
+### 🚦 Issues
 
 When createing issues, please explain:
 
@@ -16,7 +16,7 @@ When createing issues, please explain:
 
 - Explain WHY is the feature needed (examples are welcome).
 
-### Pull Requests
+### 🧑‍💻 Pull Requests
 
 - Fork the project repository.
 
