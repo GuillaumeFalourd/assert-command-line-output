@@ -3,7 +3,6 @@ name: 'Test CLI commands Action'
 description: 'Github Action to test or check outputs of CLI commands 🕵️⚙️🖥'
 
 inputs:
-
     command_line:
         description: 'The command line you want to run'
         required: true
@@ -32,8 +31,10 @@ runs:
 
     - name: install strip-ansi-cli
       run: |
-        echo 🚧 Installing strip-ansi-cli
-        npm install --global strip-ansi-cli
+        if [ -z ${{ inputs.contains }} ]; then
+            echo 🚧 Installing strip-ansi-cli
+            npm install --global strip-ansi-cli
+        fi
       shell: bash
 
     - name: Create command output file
@@ -74,7 +75,7 @@ runs:
         echo ▶️ GOT: ${{ steps.comparision.outputs.result }}
         echo ▶️ EXPECTED: ${{ inputs.expected_result }}
         if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
-            echo "🆚 ❌ GOT result NOT EQUAL to EXPECTED result!"
+            echo 🆚 GOT != EXPECTED ❌
             if [ ! -z ${{ inputs.contains }} ]; then
                 echo "Command output doesn't contain \"${{ inputs.contains }}\""
                 cat output.txt
@@ -85,7 +86,7 @@ runs:
             fi
             exit 1
         else
-            echo 🆚 ✅ GOT result EQUAL to EXPECTED result!
+            echo 🆚 GOT = EXPECTED ✅
         fi
       shell: bash
 

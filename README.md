@@ -24,6 +24,7 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
 
 ## ♻️ Scenarios
 
+### Assert file
 #### Expecting command output to be EQUAL to `assert.txt` file content
 
 ```yaml
@@ -47,6 +48,8 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
           assert_file_path: path/to/assert.txt
           expected_result: FAILED
 ```
+
+### Assert specific line
 
 #### Expecting command output line 3 to be EQUAL than the `assert.txt` file content in line 3
 
@@ -72,6 +75,32 @@ This action will compare (using [diff](http://www.linuxguide.it/command_line/lin
           assert_file_path: path/to/assert.txt
           expected_result: FAILED
           specific_line: 3
+```
+
+### Assert file content
+
+#### Expecting command output to contain specific expression
+
+```yaml
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+```
+
+#### Expecting command output NOT to contain specific expression
+
+```yaml
+    steps:
+      - uses: actions/checkout@v2.3.4
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED
 ```
 
 * * *
