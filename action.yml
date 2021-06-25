@@ -71,10 +71,11 @@ runs:
       shell: bash
 
     - run: |
-        echo 👉 Comparision OUTPUT result is ${{ steps.comparision.outputs.result }}
-        echo 👉 Comparision EXPECTED result is ${{ inputs.expected_result }}
+        echo GOT 🆚 EXPECTED
+        echo ▶️ GOT ${{ steps.comparision.outputs.result }}
+        echo ▶️ EXPECTED ${{ inputs.expected_result }}
         if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
-            echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
+            echo "❌ GOT result NOT EQUAL to EXPECTED result!"
             if [ ! -z ${{ inputs.contains }} ]; then
                 echo "Command output doesn't contain \"${{ inputs.contains }}\""
                 cat output.txt
@@ -85,7 +86,7 @@ runs:
             fi
             exit 1
         else
-            echo ✅ DIFF OUTPUT value EQUAL to DIFF EXPECTED value!
+            echo ✅ GOT result EQUAL to EXPECTED result!
         fi
       shell: bash
 
