@@ -134,7 +134,7 @@ Field | Mandatory | Observation
 **contains** | NO | String expression to check on the command line output. <br/> _e.g: `my_string_expression`_
 **expected_result** | NO | Expected comparision output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
 
-### `⚠️` Details
+### ⚠️  Details
 
 - At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. 
 - If **more than one type of comparision** is set, the priority between them is:
