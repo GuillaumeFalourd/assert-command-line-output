@@ -46,7 +46,7 @@ runs:
       id: diff
       run: |
         if [ ! -z "${{ inputs.contains }}" ]; then
-          echo 🕵️ Check if output file contains \"${{ inputs.contains }}\"
+          echo 🕵️ Check if output file contains expression \"${{ inputs.contains }}\"
           if grep -q "${{ inputs.contains }}" output.txt; then
             result=$(echo "PASSED")
           else
@@ -71,8 +71,8 @@ runs:
       shell: bash
 
     - run: |
-        echo ☞ DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
-        echo ☞ DIFF EXPECTED value is ${{ inputs.expected_result }}
+        echo 👉 DIFF OUTPUT value is ${{ steps.diff.outputs.result }}
+        echo 👉 DIFF EXPECTED value is ${{ inputs.expected_result }}
         if [ ${{ steps.diff.outputs.result }} != ${{ inputs.expected_result }} ]; then
           echo "❌ DIFF OUTPUT value NOT EQUAL to DIFF EXPECTED value!"
           if [ ! -z "${{ inputs.contains }}" ]; then
