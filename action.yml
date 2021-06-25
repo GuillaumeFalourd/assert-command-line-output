@@ -71,7 +71,8 @@ runs:
         echo "::set-output name=result::$(echo $result)"
       shell: bash
 
-    - run: |
+    - name: GOT vs EXPECTED
+      run: |
         echo ▶️ GOT: ${{ steps.comparision.outputs.result }}
         echo ▶️ EXPECTED: ${{ inputs.expected_result }}
         if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
