@@ -134,14 +134,12 @@ Field | Mandatory | Observation
 **contains** | NO | String expression to check on the command line output. <br/> _e.g: `my_string_expression`_
 **expected_result** | NO | Expected comparision output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
 
-⚠️   At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. 
-
+- At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. 
 - If **more than one type of comparision** is set, the priority between them is:
   - 1️⃣ `contains`
   - 2️⃣ `specific_line`
   - 3️⃣ `assert_file_path`
-
-⚠️   You can then access the **output.txt file** in the repository directory **where you ran the action**.
+- You can then access the **output.txt file** in the repository directory **where you ran the action**.
 
 * * *
 
