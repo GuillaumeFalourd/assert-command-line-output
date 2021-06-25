@@ -12,7 +12,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ## 📚 Usage
 
-![usage](https://user-images.githubusercontent.com/22433243/123485496-9c80a800-d5e0-11eb-83b5-c259490e4b6a.png)
+![usage](https://user-images.githubusercontent.com/22433243/123485559-b8844980-d5e0-11eb-96de-b2949fea9f98.png)
 
 ⚠️  The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
 
