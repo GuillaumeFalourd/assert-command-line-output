@@ -9,16 +9,16 @@ inputs:
     assert_file_path:
         description: 'repo/path/file.txt'
         required: false
-    expected_result:
-        description: 'PASSED or FAILED'
-        required: false
-        default: 'PASSED'
     specific_line:
         description: 'file line to compare'
         required: false
     contains: 
         description: 'String the file must contain'
         required: false
+    expected_result:
+        description: 'PASSED or FAILED'
+        required: false
+        default: 'PASSED'
 
 outputs:
   diff-output:
