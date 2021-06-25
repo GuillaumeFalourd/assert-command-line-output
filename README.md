@@ -12,6 +12,8 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ## 📚 Usage
 
+☞ [Who is using this action? 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&type=code)
+
 ### How does the action work?
 
 ![how does the action work](https://user-images.githubusercontent.com/22433243/123486342-39901080-d5e2-11eb-94f2-3f45b4ed6205.png)
@@ -22,7 +24,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ⚠️  The [`actions/setup-node`](https://github.com/marketplace/actions/setup-node-js-environment) may be mandatory to use this action if uses to compare the command line output with a file content located on the repository, as it will install [strip ansi cli](https://www.npmjs.com/package/strip-ansi-cli) to check both files independently of the OS runner.
 
-*Note: This action gather the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
+☞ *Note: This action gathers the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
  * * *
 
@@ -132,12 +134,12 @@ Field | Mandatory | Observation
 **contains** | NO | String expression to check on the command line output. <br/> _e.g: `my_string_expression`_
 **expected_result** | NO | Expected comparision output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
 
-_NOTE 1: **At least one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. If **more than one type of comparision** is set, the priority between them is: `contains` > `specific_line` > `assert_file_path`._
+☞ _NOTE 1: **At least one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured. If **more than one type of comparision** is set, the priority between them is: `contains` > `specific_line` > `assert_file_path`._
 
-_NOTE 2: You can then access the **output.txt file** in the repository directory **where you ran the action**._
+☞ _NOTE 2: You can then access the **output.txt file** in the repository directory **where you ran the action**._
 
 * * *
 
-## Licensed
+## 🏅 Licensed
 
-This repository uses the [Apache License 2.0](https://github.com/GuillaumeFalourd/aws-cliaction/blob/main/LICENSE)
+☞ This repository uses the [Apache License 2.0](https://github.com/GuillaumeFalourd/aws-cliaction/blob/main/LICENSE)
