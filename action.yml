@@ -45,9 +45,7 @@ runs:
     - name: Diff commands
       id: diff
       run: |
-        echo Contains: ${{ inputs.contains }}
-        echo Specific Line: ${{ inputs.specific_line }}
-        if [ ! -z "${{ inputs.contains }}" }} ]; then
+        if [ ! -z "${{ inputs.contains }}" ]; then
           echo 🕵️ Check if output file contains "${{ inputs.contains }}"
           if grep -q ${{ inputs.contains }} output.txt; then
             result=$(echo "PASSED")
