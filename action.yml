@@ -7,13 +7,13 @@ inputs:
         description: 'The command line you want to run'
         required: true
     assert_file_path:
-        description: 'repo/path/file.txt'
+        description: 'Path to assert file to compare. e.g: repo/path/file.txt'
         required: false
     specific_line:
-        description: 'file line to compare'
+        description: 'Assert file line to compare with the command line output file'
         required: false
     contains: 
-        description: 'String the file must contain'
+        description: 'Expression the command line output file must contain'
         required: false
     expected_result:
         description: 'PASSED or FAILED'
