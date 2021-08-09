@@ -6,7 +6,7 @@ You're welcome to create ISSUES or open PULL REQUESTS 🚀
 
 ### 🚦 Issues
 
-When createing issues, please explain:
+When creating issues, please explain:
 
 #### Bug fixes
 
