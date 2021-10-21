@@ -4,7 +4,7 @@
 
 ![title](https://user-images.githubusercontent.com/22433243/122581482-7893f400-d02d-11eb-9eee-5e62fe52dadd.png)
 
-Github Action to test or check outputs of CLI commands 🕵️⚙️🖥
+Github Action to test / check command lines outputs 🕵️⚙️🖥
 
 This action allows to compare a _command line output_ (success or error) with a _file content_ located on the repository, or to check if it contains a specific _expression_.
 
