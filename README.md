@@ -134,13 +134,13 @@ Field | Mandatory | Observation
 **assert_file_path** | NO | Path to assert file that will be compared to command line output. <br/> _e.g: `path/to/assert.txt`_
 **specific_line** | NO | Specific line to check from output file with assert file. <br/> **NEEDS** `assert_file_path` configured. <br/> _e.g: `1` (*integer value only*)_
 **contains** | NO | String expression to check on the command line output. <br/> _e.g: `string expression`_
-**expected_result** | NO | Expected comparision output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
+**expected_result** | NO | Expected assert output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
 
 ### 🔎 Good to know
 
-- At least **one type of comparision** between `contains`, `specific_line` and `assert_file_path` has to be configured.
+- At least **one type of assert** between `contains`, `specific_line` and `assert_file_path` has to be configured.
 
-- If **more than one type of comparision** is set, the priority between them is:
+- If **more than one type of assert** is set, the priority between them is:
   - 1️⃣ `contains`
   - 2️⃣ `specific_line`
   - 3️⃣ `assert_file_path`
