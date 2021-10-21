@@ -42,7 +42,7 @@ This action allows to compare a _command line output_ (success or error) with a 
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+      - uses: GuillaumeFalourd/check-command-line-output@v2
         with:
           command_line: ls -lha
           assert_file_path: path/to/assert.txt
@@ -57,7 +57,7 @@ This action allows to compare a _command line output_ (success or error) with a 
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+      - uses: GuillaumeFalourd/check-command-line-output@v2
         with:
           command_line: ls -lha
           assert_file_path: path/to/assert.txt
@@ -74,7 +74,7 @@ This action allows to compare a _command line output_ (success or error) with a 
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+      - uses: GuillaumeFalourd/check-command-line-output@v2
         with:
           command_line: ls -lha
           assert_file_path: path/to/assert.txt
@@ -90,7 +90,7 @@ This action allows to compare a _command line output_ (success or error) with a 
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+      - uses: GuillaumeFalourd/check-command-line-output@v2
         with:
           command_line: ls -lha
           assert_file_path: path/to/assert.txt
@@ -105,7 +105,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+      - uses: GuillaumeFalourd/check-command-line-output@v2
         with:
           command_line: ls -lha
           contains: runner
@@ -117,7 +117,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/test-cli-commands-action@v1
+      - uses: GuillaumeFalourd/check-command-line-output@v2
         with:
           command_line: ls -lha
           contains: error
