@@ -1,6 +1,6 @@
 # Check Command Line Output
 
-[![Action test on Ubuntu](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/windows_test_command_output.yml)
+[![Action test on Ubuntu](https://github.com/GuillaumeFalourd/check-command-line-output/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/check-command-line-output/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/check-command-line-output/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/check-command-line-output/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/check-command-line-output/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/check-command-line-output/actions/workflows/windows_test_command_output.yml)
 
 ![title](https://user-images.githubusercontent.com/22433243/122581482-7893f400-d02d-11eb-9eee-5e62fe52dadd.png)
 
@@ -12,7 +12,9 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ## 📚 Usage
 
-[![Public workflows that use this action.](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-endbug.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3DGuillaumeFalourd%2Ftest-cli-commands-action%26badge%3Dtrue)](https://github.com/search?o=desc&q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code) ☞ [Who is using this action? (V1) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&type=code) ☞ [Who is using this action? (V2) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+check-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&type=code)
+[![Public workflows that use this action (V1).](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-endbug.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3DGuillaumeFalourd%2Ftest-cli-commands-action%26badge%3Dtrue)](https://github.com/search?o=desc&q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code) ☞ [Who is using this action? (V1) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&type=code)
+
+[![Public workflows that use this action (V1).](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-endbug.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3DGuillaumeFalourd%2Ftest-cli-commands-action%26badge%3Dtrue)](https://github.com/search?o=desc&q=GuillaumeFalourd+check-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code) ☞ [Who is using this action? (V2) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+check-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&type=code)
 
 ### How does the action work?
 
