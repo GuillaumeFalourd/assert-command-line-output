@@ -1,10 +1,10 @@
-# Test CLI commands Action
+# Check Command Line Output
 
 [![Action test on Ubuntu](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/ubuntu_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/ubuntu_test_command_output.yml) [![Action test on MacOs](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/macos_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/macos_test_command_output.yml) [![Action test on Windows](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/windows_test_command_output.yml/badge.svg)](https://github.com/GuillaumeFalourd/test-cli-commands-action/actions/workflows/windows_test_command_output.yml)
 
 ![title](https://user-images.githubusercontent.com/22433243/122581482-7893f400-d02d-11eb-9eee-5e62fe52dadd.png)
 
-Github Action to test / check command lines outputs 🕵️⚙️🖥
+Github Action to test / check a command line output 🕵️⚙️🖥
 
 This action allows to compare a _command line output_ (success or error) with a _file content_ located on the repository, or to check if it contains a specific _expression_.
 
