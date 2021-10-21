@@ -1,4 +1,4 @@
-name: 'Test command line output'
+name: 'Test CLI commands action'
 
 description: 'Github Action to test or check outputs of CLI commands 🕵️⚙️🖥'
 
