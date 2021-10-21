@@ -1,6 +1,6 @@
-name: 'Check Command Line Output'
+name: 'Assert Command Line Output'
 
-description: 'Github Action to test / check a command line output 🕵️⚙️🖥'
+description: 'Github Action to assert / check a command line output 🕵️⚙️🖥'
 
 inputs:
     command_line:
@@ -12,7 +12,7 @@ inputs:
     specific_line:
         description: 'Assert file line to compare with the command line output file'
         required: false
-    contains: 
+    contains:
         description: 'Expression the command line output file must contain'
         required: false
     expected_result:
@@ -22,8 +22,8 @@ inputs:
 
 outputs:
   diff-output:
-    description: "Comparision output"
-    value: ${{ steps.comparision.outputs.result }}
+    description: "Assert output"
+    value: ${{ steps.assert.outputs.result }}
 
 runs:
   using: "composite"
@@ -43,8 +43,8 @@ runs:
         echo 🚀 Command OUTPUT exported to output.txt file
       shell: bash
 
-    - name: Comparision
-      id: comparision
+    - name: Assert
+      id: assert
       run: |
         if [ ! -z "${{ inputs.contains }}" ]; then
             echo 🕵️ Check if output file contains expression \"${{ inputs.contains }}\"
@@ -73,9 +73,9 @@ runs:
 
     - name: GOT vs EXPECTED
       run: |
-        echo ▶️ GOT: ${{ steps.comparision.outputs.result }}
+        echo ▶️ GOT: ${{ steps.assert.outputs.result }}
         echo ▶️ EXPECTED: ${{ inputs.expected_result }}
-        if [ ${{ steps.comparision.outputs.result }} != ${{ inputs.expected_result }} ]; then
+        if [ ${{ steps.assert.outputs.result }} != ${{ inputs.expected_result }} ]; then
             echo 🆚 GOT != EXPECTED ❌
             if [ ! -z "${{ inputs.contains }}" ]; then
                 echo "Command output doesn't contain \"${{ inputs.contains }}\""
