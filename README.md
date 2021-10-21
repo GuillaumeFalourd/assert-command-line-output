@@ -14,7 +14,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 [![Public workflows that use this action (V1).](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-endbug.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3DGuillaumeFalourd%2Ftest-cli-commands-action%26badge%3Dtrue)](https://github.com/search?o=desc&q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code) ☞ [Who is using this action? (V1) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+test-cli-commands-action+path%3A.github%2Fworkflows+language%3AYAML&type=code)
 
-[![Public workflows that use this action (V1).](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-endbug.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3DGuillaumeFalourd%2Fassert-command-line-output%26badge%3Dtrue)](https://github.com/search?o=desc&q=GuillaumeFalourd+assert-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code) ☞ [Who is using this action? (V2) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+assert-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&type=code)
+[![Public workflows that use this action (V2).](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi-endbug.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3DGuillaumeFalourd%2Fassert-command-line-output%26badge%3Dtrue)](https://github.com/search?o=desc&q=GuillaumeFalourd+assert-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&s=&type=Code) ☞ [Who is using this action? (V2) 🧑‍💻](https://github.com/search?q=GuillaumeFalourd+assert-command-line-output+path%3A.github%2Fworkflows+language%3AYAML&type=code)
 
 ### How does the action work?
 
