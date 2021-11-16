@@ -1,4 +1,4 @@
-name: Action test on Windows
+name: Action test on Ubuntu (V1)
 
 on:
   push:
@@ -6,30 +6,39 @@ on:
 
 jobs:
   PASSED-assert-file:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@main
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
           expected_result: PASSED
 
   FAILED-assert-file:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@main
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
           expected_result: FAILED
 
   PASSED-specific-line:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@main
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -37,10 +46,13 @@ jobs:
           specific_line: 1
 
   FAILED-specific-line:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@main
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -48,20 +60,20 @@ jobs:
           specific_line: 2
 
   PASSED-contains:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           contains: runner
           expected_result: PASSED
 
   FAILED-contains:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@main
+      - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
           contains: error
