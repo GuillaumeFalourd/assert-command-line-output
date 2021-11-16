@@ -22,8 +22,6 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ⚠️    The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
 
-⚠️    The [`actions/setup-node`](https://github.com/marketplace/actions/setup-node-js-environment) may be mandatory to use this action if uses to compare the command line output with a file content located on the repository, as it will install [strip ansi cli](https://www.npmjs.com/package/strip-ansi-cli) to check both files independently of the OS runner.
-
 ☞ *Note: This action gathers the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
 
  * * *
@@ -37,9 +35,6 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -52,9 +47,6 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -69,9 +61,6 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -85,9 +74,6 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha

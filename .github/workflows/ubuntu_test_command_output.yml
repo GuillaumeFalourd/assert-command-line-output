@@ -9,9 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@main
         with:
           command_line: cat action.yml
@@ -21,23 +18,17 @@ jobs:
   FAILED-assert-file:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      - uses: actions/checkou
       - uses: GuillaumeFalourd/test-cli-commands-action@main
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
           expected_result: FAILED
-  
+
   PASSED-specific-line:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@main
         with:
           command_line: cat action.yml
@@ -49,9 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
       - uses: GuillaumeFalourd/test-cli-commands-action@main
         with:
           command_line: ls -lha
