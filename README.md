@@ -141,4 +141,4 @@ Field | Mandatory | Observation
 
 ## 🏅 Licensed
 
-☞ This repository uses the [Apache License 2.0](https://github.com/GuillaumeFalourd/test-cli-command-action/blob/main/LICENSE)
+☞ This repository uses the [Apache License 2.0](https://github.com/GuillaumeFalourd/assert-command-line-output/blob/main/LICENSE)
