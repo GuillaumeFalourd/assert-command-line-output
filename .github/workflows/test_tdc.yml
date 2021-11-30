@@ -13,4 +13,4 @@ jobs:
         with:
           command_line: ls -lha
           assert_file_path: path/to/assert.txt
-          expected_result: FAILED
+          expected_result: PASSED
