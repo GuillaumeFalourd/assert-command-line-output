@@ -76,7 +76,7 @@ def main():
 		sep='\n'
 	)
 	
-	sys.exit(test_result == input_expected_result)
+	sys.exit(test_result != input_expected_result)
 
 
 def process_text(input_text):
