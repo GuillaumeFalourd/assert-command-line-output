@@ -1,0 +1,48 @@
+name: 'Assert Command Line Output'
+
+description: 'Github Action to assert / check a command line output 🕵️⚙️🖥'
+
+inputs:
+    command_line:
+        description: 'The command line you want to run'
+        required: true
+    assert_file_path:
+        description: 'Path to assert file to compare. e.g: repo/path/file.txt'
+        required: false
+    specific_line:
+        description: 'Assert file line to compare with the command line output file'
+        required: false
+    contains:
+        description: 'Expression the command line output file must contain'
+        required: false
+    expected_result:
+        description: 'PASSED or FAILED'
+        required: false
+        default: 'PASSED'
+
+outputs:
+  diff-output:
+    description: "Assert output"
+    value: ${{ steps.assert.outputs.result }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v2 # Checkout the repository content to github runner.
+
+    - name: Setup Python Version
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8 # Install the python version needed
+
+    # - name: Install Python dependencies
+    #   run: python -m pip install --upgrade pip requests
+
+    - name: Execute Python script # Run the run.py to get the latest data
+      run: python "${{ github.action_path }}/assert.py" "${{ inputs.command_line }}" "${{ inputs.assert_file_path }}" "${{ inputs.specific_line }}" "${{ inputs.contains }}" "${{ inputs.expected_result }}"
+      shell: bash
+
+branding:
+    icon: 'check'
+    color: 'green'
