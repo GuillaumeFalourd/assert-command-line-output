@@ -29,6 +29,12 @@ def main():
 	input_contains = sys.argv[4].replace('_', '')
 	input_expected_result = sys.argv[5]
 
+	if input_specific_line:
+		try:
+			input_specific_line = int(input_specific_line)
+		except ValueError:
+			sys.exit("Expected a number for \"specific line\".")
+
 	print("********************************")
 	print(f"COMMAND LINE: {input_command_line}")
 	print(f"ASSERT FILE PATH: {input_assert_file_path}")
@@ -45,22 +51,24 @@ def main():
 	with open(OUTPUT_FILE) as file:
 		actual_output = process_text(file.read())
 
+
 	# Checking chosen option and getting the expected output.
 	if input_contains:
-		expected_output = process_text(input_contains)
-	elif input_specific_line:
+		raw_expected_output = input_contains
+	elif type(input_specific_line) is int:
 		if not input_assert_file_path:
 			sys.exit("Expected assert_file_path variable and got none.")
 		with open(input_assert_file_path) as file:
-			expected_output = process_text(file.readlines()[input_specific_line - 1])
+			raw_expected_output = file.readlines()[input_specific_line - 1]
 	elif input_assert_file_path:
 		with open(input_assert_file_path) as file:
-			expected_output = process_text(file.readlines()[input_specific_line - 1])
+			raw_expected_output = file.read()
 	else:
 		sys.exit("Not enough inputs.")
 
-	# Checking if tests passed and comparing to expected result.
+	expected_output = process_text(raw_expected_output)
 
+	# Checking if tests passed and comparing against expected result.
 	test_result = "PASSED" if expected_output in actual_output else "FAILED"
 	print(
 		f"Expected: {input_expected_result}",
