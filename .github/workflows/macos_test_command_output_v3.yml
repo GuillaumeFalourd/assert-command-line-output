@@ -2,8 +2,8 @@ name: Action test on MacOs (V3)
 
 on:
   push:
-    - branches: [v3]
-  # workflow_dispatch:
+    branches: [v3]
+  workflow_dispatch:
 
 jobs:
   PASSED-assert-file:
