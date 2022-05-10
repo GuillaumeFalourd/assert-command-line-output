@@ -9,12 +9,15 @@ inputs:
     assert_file_path:
         description: 'Path to assert file to compare. e.g: repo/path/file.txt'
         required: false
+        # default: ''
     specific_line:
         description: 'Assert file line to compare with the command line output file'
         required: false
+        # default: ''
     contains:
         description: 'Expression the command line output file must contain'
         required: false
+        # default: ''
     expected_result:
         description: 'PASSED or FAILED'
         required: false
