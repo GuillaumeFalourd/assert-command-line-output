@@ -6,10 +6,27 @@ ENV_FILE = os.getenv('GITHUB_ENV')
 
 
 def main():
+	if len(sys.argv) != 6:
+		sys.exit(
+			f"Invalid usage: not enough arguments. \"Empty\" arguments should receive \"_\".\n\
+			\rExpected:\n{sys.argv[0]} \"<CommandLine>\" \"_<AssertFilePath>\" \"_<SpecificLineNumber>\" \"_<Contains>\" \"<ExpectedResult>\"\n"
+		)
+	if not ((sys.argv[2][0] == '_') and (sys.argv[3][0] == '_') and (sys.argv[4][0] == '_')):
+		sys.exit(
+			f"Invalid usage: arguments in the middle should have a \"_\" before the actual input.\n\
+			\rExpected:\n{sys.argv[0]} \"<CommandLine>\" \"_<AssertFilePath>\" \"_<SpecificLineNumber>\" \"_<Contains>\" \"<ExpectedResult>\""
+		)
+
+	# The first and last argument will always exist given the workflow's
+	# requirements.
+	# The ones in the middle may not exist, so the workflow needs to ensure
+	# they do.
+	# Read the above sys.exit exceptions for guidance.
+
 	input_command_line = sys.argv[1]
-	input_assert_file_path = sys.argv[2]
-	input_specific_line = sys.argv[3]
-	input_contains = sys.argv[4]
+	input_assert_file_path = sys.argv[2].replace('_', '')
+	input_specific_line = sys.argv[3].replace('_', '')
+	input_contains = sys.argv[4].replace('_', '')
 	input_expected_result = sys.argv[5]
 
 	print("********************************")
