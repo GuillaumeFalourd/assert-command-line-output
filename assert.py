@@ -48,21 +48,19 @@ def main():
 	# Running cmd input and saving logs to OUTPUT_FILE.
 	os.system(f"{input_command_line} > {OUTPUT_FILE}")
 	# Reading OUTPUT_FILE and processing output text.
-	with open(OUTPUT_FILE) as file:
-		actual_output = process_text(file.read())
+	with open(OUTPUT_FILE, encoding='utf-8') as file:
+		actual_output = file.read()
+	actual_output = process_text(actual_output)
 
 
 	# Checking chosen option and getting the expected output.
 	if input_contains:
 		raw_expected_output = input_contains
-	elif type(input_specific_line) is int:
-		if not input_assert_file_path:
-			sys.exit("Expected assert_file_path variable and got none.")
-		with open(input_assert_file_path) as file:
-			raw_expected_output = file.readlines()[input_specific_line - 1]
 	elif input_assert_file_path:
-		with open(input_assert_file_path) as file:
+		with open(input_assert_file_path, encoding='utf-8') as file:
 			raw_expected_output = file.read()
+		if type(input_specific_line) is int:
+			raw_expected_output = raw_expected_output.split('\n')[input_specific_line - 1]
 	else:
 		sys.exit("Not enough inputs.")
 
