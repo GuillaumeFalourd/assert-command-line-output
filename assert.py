@@ -28,9 +28,9 @@ def main():
 	# Read the above sys.exit exceptions for guidance.
 
 	input_command_line = sys.argv[1]
-	input_assert_file_path = sys.argv[2].replace('_', '')
-	input_specific_line = sys.argv[3].replace('_', '')
-	input_contains = sys.argv[4].replace('_', '')
+	input_assert_file_path = sys.argv[2].replace('_', '', 1)
+	input_specific_line = sys.argv[3].replace('_', '', 1)
+	input_contains = sys.argv[4].replace('_', '', 1)
 	input_expected_result = sys.argv[5]
 
 	if input_specific_line:
