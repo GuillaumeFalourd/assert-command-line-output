@@ -6,11 +6,15 @@ ENV_FILE = os.getenv('GITHUB_ENV')
 
 
 def main():
+	# This file should only run in the following conditions:
+	# It should receive exactly 6 arguments (including the file path).
 	if len(sys.argv) != 6:
 		sys.exit(
 			f"Invalid usage: not enough arguments. \"Empty\" arguments should receive \"_\".\n\
 			\rExpected:\n{sys.argv[0]} \"<CommandLine>\" \"_<AssertFilePath>\" \"_<SpecificLineNumber>\" \"_<Contains>\" \"<ExpectedResult>\"\n"
 		)
+	# The third, fourth and fifth argument should always start with "_", which will
+	# be ignored and removed from the string later.
 	if not ((sys.argv[2][0] == '_') and (sys.argv[3][0] == '_') and (sys.argv[4][0] == '_')):
 		sys.exit(
 			f"Invalid usage: arguments in the middle should have a \"_\" before the actual input.\n\
@@ -53,7 +57,7 @@ def main():
 	actual_output = process_text(actual_output)
 
 
-	# Checking chosen option and getting the expected output.
+	# Checking chosen option and getting the raw expected output.
 	if input_contains:
 		raw_expected_output = input_contains
 	elif input_assert_file_path:

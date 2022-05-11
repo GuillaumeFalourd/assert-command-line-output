@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: ArielMAJ/assert-command-line-output@v3
+      - uses: GuillaumeFalourd/test-cli-commands-action@v3
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: ArielMAJ/assert-command-line-output@v3
+      - uses: GuillaumeFalourd/test-cli-commands-action@v3
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: ArielMAJ/assert-command-line-output@v3
+      - uses: GuillaumeFalourd/test-cli-commands-action@v3
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: ArielMAJ/assert-command-line-output@v3
+      - uses: GuillaumeFalourd/test-cli-commands-action@v3
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: ArielMAJ/assert-command-line-output@v3
+      - uses: GuillaumeFalourd/test-cli-commands-action@v3
         with:
           command_line: ls -lha
           contains: runner
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - uses: ArielMAJ/assert-command-line-output@v3
+      - uses: GuillaumeFalourd/test-cli-commands-action@v3
         with:
           command_line: ls -lha
           contains: error
