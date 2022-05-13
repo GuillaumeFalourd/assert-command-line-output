@@ -40,7 +40,7 @@ runs:
     #   run: python -m pip install --upgrade pip requests
 
     - name: Execute Python script # Run the run.py to get the latest data
-      run: python "${{ github.action_path }}/assert.py" "${{ inputs.command_line }}" "${{ inputs.assert_file_path }}" "${{ inputs.specific_line }}" "${{ inputs.contains }}" "${{ inputs.expected_result }}"
+      run: python "${{ github.action_path }}/assert.py" "${{ inputs.command_line }}" "_${{ inputs.assert_file_path }}" "_${{ inputs.specific_line }}" "_${{ inputs.contains }}" "${{ inputs.expected_result }}"
       shell: bash
 
 branding:

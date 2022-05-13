@@ -2,7 +2,7 @@ name: Action test on Windows (V3)
 
 on:
   push:
-    - branches: [v3]
+    branches: [v3]
   workflow_dispatch:
 
 jobs:
