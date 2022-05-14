@@ -1,3 +1,36 @@
+"""
+assert.py is a module for asserting the actual output of a given command is equal to a given
+expected output.
+This can be used for asserting in any language as long as you pass in the correct cmd command that
+will run your code. It will then compare it to either your written input in "_<Contains>" or the
+contents of a file.
+
+This module should be called in accord to the following pattern:
+python assert.py "<CommandLine>" "_<AssertFilePath>" "_<SpecificLineNumber>" "_<Contains>" "<ExpectedResult>"
+e.g. python assert.py "echo Hi" "_" "_" "_Hi" "PASSED"
+
+As an usage example, let's say you want to assert your fibonacci series program
+is calculating the correct fibonacci sequence. You could write your input and output
+in text files such as test1.in and test1.out, respectively, and call:
+
+If your program expects inputs from stdin (e.g. input(...), scanf(...), etc):
+python assert.py "python fib.py < test1.in" "_test1.out" "_" "_" "PASSED"
+python assert.py "fib.exe < test1.in" "_test1.out" "_" "_" "PASSED"
+
+If your program expects the file from command line arguments:
+python assert.py "python fib.py test1.in" "_" "_" "_test1.out" "PASSED"
+python assert.py "fib.exe test1.in" "_" "_" "_test1.out" "PASSED"
+
+If your program statically reads the file:
+python assert.py "python fib.py" "_" "_" "_test1.out" "PASSED"
+python assert.py "fib.exe" "_" "_" "_test1.out" "FAILED"
+
+Other examples:
+python assert.py "python fib.py 1" "_" "_" "_1" "PASSED"
+python assert.py "python fib.py 1" "_" "_" "_0" "FAILED"
+python assert.py "echo Hi" "_" "_" "_Hello" "FAILED"
+"""
+
 import sys
 import os
 
@@ -6,15 +39,16 @@ ENV_FILE = os.getenv('GITHUB_ENV')
 
 
 def main():
-	# This file should only run in the following conditions:
-	# It should receive exactly 6 arguments (including the file path).
+	"""The main function should only run in the following conditions:
+	1. sys.argv should have exactly 6 values (including the file path);
+        a. This means this module received 5 arguments when called.
+    2. The second to fourth arguments should always start with "_".
+    """
 	if len(sys.argv) != 6:
 		sys.exit(
 			f"Invalid usage: not enough arguments. \"Empty\" arguments should receive \"_\".\n\
 			\rExpected:\n{sys.argv[0]} \"<CommandLine>\" \"_<AssertFilePath>\" \"_<SpecificLineNumber>\" \"_<Contains>\" \"<ExpectedResult>\"\n"
 		)
-	# The third, fourth and fifth argument should always start with "_", which will
-	# be ignored and removed from the string later.
 	if not ((sys.argv[2][0] == '_') and (sys.argv[3][0] == '_') and (sys.argv[4][0] == '_')):
 		sys.exit(
 			f"Invalid usage: arguments in the middle should have a \"_\" before the actual input.\n\
@@ -25,7 +59,6 @@ def main():
 	# requirements.
 	# The ones in the middle may not exist, so the workflow needs to ensure
 	# they do.
-	# Read the above sys.exit exceptions for guidance.
 
 	input_command_line = sys.argv[1]
 	input_assert_file_path = sys.argv[2].replace('_', '', 1)
@@ -83,7 +116,7 @@ def main():
 
 def process_text(input_text):
 	"""Removes trailing spaces, (extra) new lines ('\\n') and carriage return ('\\r') 
-	from each line of some 'input_text' and returns it"""
+	\rfrom each line of some 'input_text' and returns it"""
 
 	processed_text = [line.strip(" \r\n") for line in input_text.strip(" \r\n").split("\n")]
 
