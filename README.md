@@ -37,7 +37,7 @@ This action allows to compare a _command line output_ (success or error) with a 
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.1
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -49,7 +49,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.1
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -63,7 +63,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.1
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -76,7 +76,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.1
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -91,7 +91,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.1
     with:
       command_line: ls -lha
       contains: runner
@@ -103,7 +103,7 @@ steps:
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.1
     with:
       command_line: ls -lha
       contains: error
