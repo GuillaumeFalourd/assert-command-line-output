@@ -8,7 +8,7 @@ jobs:
   PASSED-assert-file:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: cat action.yml
@@ -18,7 +18,7 @@ jobs:
   FAILED-assert-file:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
@@ -28,7 +28,7 @@ jobs:
   PASSED-specific-line:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: cat action.yml
@@ -39,7 +39,7 @@ jobs:
   FAILED-specific-line:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
@@ -50,7 +50,7 @@ jobs:
   PASSED-contains:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
@@ -60,7 +60,7 @@ jobs:
   FAILED-contains:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
