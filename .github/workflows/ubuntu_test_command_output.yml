@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ajantsch/assert-command-line-output@main
+      - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ajantsch/assert-command-line-output@main
+      - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ajantsch/assert-command-line-output@main
+      - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ajantsch/assert-command-line-output@main
+      - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ajantsch/assert-command-line-output@main
+      - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
           contains: runner
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ajantsch/assert-command-line-output@main
+      - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
           contains: error
