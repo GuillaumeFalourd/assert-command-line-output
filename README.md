@@ -8,7 +8,7 @@ Github Action to assert / check a command line output 🕵️⚙️🖥
 
 This action allows to compare a _command line output_ (success or error) with a _file content_ located on the repository, or to check if it contains a specific _expression_.
 
-* * *
+---
 
 ## 📚 Usage
 
@@ -22,11 +22,11 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ### Requirements
 
-⚠️    The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
+⚠️ The [`actions/checkout`](https://github.com/marketplace/actions/checkout) is mandatory to use this action, as it will be necessary to access the repository files, or to access the command line output file after the action execution.
 
-☞ *Note: This action gathers the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)*.
+☞ _Note: This action gathers the logic from the [command-output-file-action](https://github.com/GuillaumeFalourd/command-output-file-action) and the [diff-action](https://github.com/GuillaumeFalourd/diff-action)_.
 
- * * *
+---
 
 ## ♻️ Scenarios
 
@@ -35,25 +35,25 @@ This action allows to compare a _command line output_ (success or error) with a 
 #### Expecting command output to be EQUAL to `assert.txt` file content
 
 ```yaml
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
-        with:
-          command_line: ls -lha
-          assert_file_path: path/to/assert.txt
-          expected_result: PASSED
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2
+    with:
+      command_line: ls -lha
+      assert_file_path: path/to/assert.txt
+      expected_result: PASSED
 ```
 
 #### Expecting command output to be DIFFERENT than the `assert.txt` file content
 
 ```yaml
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
-        with:
-          command_line: ls -lha
-          assert_file_path: path/to/assert.txt
-          expected_result: FAILED
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2
+    with:
+      command_line: ls -lha
+      assert_file_path: path/to/assert.txt
+      expected_result: FAILED
 ```
 
 ### `2️⃣ Assert specific file line`
@@ -61,27 +61,27 @@ This action allows to compare a _command line output_ (success or error) with a 
 #### Expecting command output line 3 to be EQUAL than the `assert.txt` file content in line 3
 
 ```yaml
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
-        with:
-          command_line: ls -lha
-          assert_file_path: path/to/assert.txt
-          expected_result: PASSED
-          specific_line: 3
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2
+    with:
+      command_line: ls -lha
+      assert_file_path: path/to/assert.txt
+      expected_result: PASSED
+      specific_line: 3
 ```
 
 #### Expecting command output line 3 to be DIFFERENT than the `assert.txt` file content in line 3
 
 ```yaml
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
-        with:
-          command_line: ls -lha
-          assert_file_path: path/to/assert.txt
-          expected_result: FAILED
-          specific_line: 3
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2
+    with:
+      command_line: ls -lha
+      assert_file_path: path/to/assert.txt
+      expected_result: FAILED
+      specific_line: 3
 ```
 
 ### `3️⃣ Assert specific expression`
@@ -89,51 +89,52 @@ This action allows to compare a _command line output_ (success or error) with a 
 #### Expecting command output to contain specific expression
 
 ```yaml
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
-        with:
-          command_line: ls -lha
-          contains: runner
-          expected_result: PASSED
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2
+    with:
+      command_line: ls -lha
+      contains: runner
+      expected_result: PASSED
 ```
 
 #### Expecting command output NOT to contain specific expression
 
 ```yaml
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: GuillaumeFalourd/assert-command-line-output@v2
-        with:
-          command_line: ls -lha
-          contains: error
-          expected_result: FAILED
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2
+    with:
+      command_line: ls -lha
+      contains: error
+      expected_result: FAILED
 ```
 
-* * *
+---
 
 ## ▶️ Action Inputs
 
-Field | Mandatory | Observation
------------- | ------------  | -------------
-**command_line** | YES | Command Line to assert / check. <br/> _e.g: `ls -lha`_
-**assert_file_path** | NO | Path to assert file that will be compared to command line output. <br/> _e.g: `path/to/assert.txt`_
-**specific_line** | NO | Specific line to check from output file with assert file. <br/> **NEEDS** `assert_file_path` configured. <br/> _e.g: `1` (*integer value only*)_
-**contains** | NO | String expression to check on the command line output. <br/> _e.g: `string expression`_
-**expected_result** | NO | Expected assert output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_
+| Field                | Mandatory | Observation                                                                                                                                      |
+| -------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **command_line**     | YES       | Command Line to assert / check. <br/> _e.g: `ls -lha`_                                                                                           |
+| **assert_file_path** | NO        | Path to assert file that will be compared to command line output. <br/> _e.g: `path/to/assert.txt`_                                              |
+| **specific_line**    | NO        | Specific line to check from output file with assert file. <br/> **NEEDS** `assert_file_path` configured. <br/> _e.g: `1` (*integer value only*)_ |
+| **contains**         | NO        | String expression to check on the command line output. <br/> _e.g: `string expression`_                                                          |
+| **expected_result**  | NO        | Expected assert output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_                                                                            |
 
 ### 🔎 Good to know
 
 - At least **one type of assert** between `contains`, `specific_line` and `assert_file_path` has to be configured.
 
 - If **more than one type of assert** is set, the priority between them is:
+
   - 1️⃣ `contains`
   - 2️⃣ `specific_line`
   - 3️⃣ `assert_file_path`
 
 - You can access the **output.txt file** in the repository directory **after running the action**.
 
-* * *
+---
 
 ## 🤝 Contributing
 
