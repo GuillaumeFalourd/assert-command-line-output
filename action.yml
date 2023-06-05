@@ -72,7 +72,7 @@ runs:
                 result=$(echo "FAILED")
             fi
         fi
-        echo "{result}={$(echo $result)}" >> $GITHUB_OUTPUT
+        echo "result=$(echo $result)" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: GOT vs EXPECTED
