@@ -110,6 +110,22 @@ steps:
       expected_result: FAILED
 ```
 
+### `4️⃣ Multiple-line commands`
+
+The assert may fail while using multiple-line commands. When this is necessary, use single quotes `'`.
+
+```yaml
+steps:
+  - uses: actions/checkout@v3
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+    with:
+      command_line: | 
+        'a_very_long_command --that --need
+        --multiple --lines --to --write'
+      assert_file_path: path/to/assert.txt
+      expected_result: PASSED
+```
+
 ---
 
 ## ▶️ Action Inputs
