@@ -15,6 +15,9 @@ inputs:
     contains:
         description: 'Expression the command line output file must contain'
         required: false
+    work_dir:
+        description: 'Path to run the command and respective assertion'
+        required: false
     expected_result:
         description: 'PASSED or FAILED'
         required: false
@@ -45,7 +48,9 @@ runs:
       run: |
         ${{ inputs.command_line }} &> output.txt || true
         echo 🚀 Command OUTPUT exported to output.txt file
+      working-directory: ${{ inputs.work_dir }}
       shell: bash
+      
 
     - name: Assert
       id: assert
@@ -73,6 +78,7 @@ runs:
             fi
         fi
         echo "result=$(echo $result)" >> $GITHUB_OUTPUT
+      working-directory: ${{ inputs.work_dir }}
       shell: bash
 
     - name: GOT vs EXPECTED
@@ -93,6 +99,7 @@ runs:
         else
             echo 🆚 GOT = EXPECTED ✅
         fi
+      working-directory: ${{ inputs.work_dir }}
       shell: bash
 
 branding:
