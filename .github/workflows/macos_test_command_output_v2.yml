@@ -1,4 +1,4 @@
-name: Action test on MacOs
+name: Action test on MacOs (V2)
 
 on:
   push:
