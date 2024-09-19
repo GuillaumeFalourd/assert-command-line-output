@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: cat action.yml
           assert_file_path: action.yml
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: ls -lha
           assert_file_path: assert.txt
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: ls -lha
           contains: runner
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: ls -lha
           contains: error
@@ -73,7 +73,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: mkdir abc
       - run: echo "Hello World" > abc/def.txt
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: cat def.txt
           contains: Hello
@@ -86,7 +86,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: mkdir abc
       - run: echo "Hello World" > abc/def.txt
-      - uses: pedroaston/assert-command-line-output@workdir_feature
+      - uses: ./
         with:
           command_line: cat def.txt
           contains: Goodbye
