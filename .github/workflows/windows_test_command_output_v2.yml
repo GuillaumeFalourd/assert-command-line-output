@@ -1,0 +1,94 @@
+name: Action test on Windows (V2)
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  PASSED-assert-file:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          command_line: cat action.yml
+          assert_file_path: action.yml
+          expected_result: PASSED
+
+  FAILED-assert-file:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+
+  PASSED-specific-line:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          command_line: cat action.yml
+          assert_file_path: action.yml
+          expected_result: PASSED
+          specific_line: 1
+
+  FAILED-specific-line:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          command_line: ls -lha
+          assert_file_path: assert.txt
+          expected_result: FAILED
+          specific_line: 2
+
+  PASSED-contains:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          command_line: ls -lha
+          contains: runner
+          expected_result: PASSED
+
+  FAILED-contains:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          command_line: ls -lha
+          contains: error
+          expected_result: FAILED
+
+  PASSED-work-dir:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir abc
+      - run: echo "Hello World" > abc/def.txt
+      - uses: ./
+        with:
+          command_line: cat def.txt
+          contains: Hello
+          work_dir: abc
+          expected_result: PASSED
+
+  FAILED-work-dir:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir abc
+      - run: echo "Hello World" > abc/def.txt
+      - uses: ./
+        with:
+          command_line: cat def.txt
+          contains: Goodbye
+          work_dir: abc
+          expected_result: FAILED
