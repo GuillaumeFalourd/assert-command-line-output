@@ -36,8 +36,8 @@ This action allows to compare a _command line output_ (success or error) with a 
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -48,8 +48,8 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -62,8 +62,8 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -75,8 +75,8 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: ls -lha
       assert_file_path: path/to/assert.txt
@@ -90,8 +90,8 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: ls -lha
       contains: runner
@@ -102,8 +102,8 @@ steps:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: ls -lha
       contains: error
@@ -116,8 +116,8 @@ The assert may fail while using multiple-line commands. When this is necessary, 
 
 ```yaml
 steps:
-  - uses: actions/checkout@v3
-  - uses: GuillaumeFalourd/assert-command-line-output@v2.2
+  - uses: actions/checkout@v4
+  - uses: GuillaumeFalourd/assert-command-line-output@v2.4
     with:
       command_line: | 
         'a_very_long_command --that --need
@@ -137,6 +137,7 @@ steps:
 | **specific_line**    | NO        | Specific line to check from output file with assert file. <br/> **NEEDS** `assert_file_path` configured. <br/> _e.g: `1` (*integer value only*)_ |
 | **contains**         | NO        | String expression to check on the command line output. <br/> _e.g: `string expression`_                                                          |
 | **expected_result**  | NO        | Expected assert output. <br/> _e.g: `PASSED` (*default*) or `FAILED`_                                                                            |
+| **work_dir**  | NO        | Use the input as working directory to run the action.                                                                           |
 
 ### 🔎 Good to know
 

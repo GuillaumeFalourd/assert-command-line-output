@@ -8,7 +8,7 @@ jobs:
   PASSED-assert-file:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: cat action.yml
@@ -18,7 +18,7 @@ jobs:
   FAILED-assert-file:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
@@ -28,7 +28,7 @@ jobs:
   PASSED-specific-line:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: cat action.yml
@@ -39,7 +39,7 @@ jobs:
   FAILED-specific-line:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
@@ -50,7 +50,7 @@ jobs:
   PASSED-contains:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha
@@ -60,7 +60,7 @@ jobs:
   FAILED-contains:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/assert-command-line-output@main
         with:
           command_line: ls -lha

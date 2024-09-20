@@ -8,7 +8,7 @@ jobs:
   PASSED-assert-file:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -21,7 +21,7 @@ jobs:
   FAILED-assert-file:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -34,7 +34,7 @@ jobs:
   PASSED-specific-line:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -48,7 +48,7 @@ jobs:
   FAILED-specific-line:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v2
         with:
           node-version: 16
@@ -62,7 +62,7 @@ jobs:
   PASSED-contains:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
@@ -72,7 +72,7 @@ jobs:
   FAILED-contains:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: GuillaumeFalourd/test-cli-commands-action@v1
         with:
           command_line: ls -lha
